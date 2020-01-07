@@ -34,4 +34,6 @@ Set-Alias ~ cUserProfile -Option AllScope
 function cUserWorkspace { Set-Location ~/source }
 Set-Alias cws cUserWorkspace -Option AllScope
 
+Set-Alias fcd cde
+
 Set-Alias lg lazygit
