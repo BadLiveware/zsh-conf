@@ -27,12 +27,11 @@ function touch {
     param ([parameter(Position = 0)][string] $Filename)
     New-Item -ItemType file $Filename
 }
-
-# Helper function to change directory to my development workspace
-# Change c:\ws to your usual workspace and everytime you type
-# in cws from PowerShell it will take you directly there.
-Set-Alias ~ cuserprofile -Option AllScope
 # Helper function to set location to the User Profile directory
-function cuserprofile { Set-Location ~ }
+function cUserProfile { Set-Location ~ }
+Set-Alias ~ cUserProfile -Option AllScope
+
+function cUserWorkspace { Set-Location ~/source }
+Set-Alias cws cUserWorkspace -Option AllScope
 
 Set-Alias lg lazygit
