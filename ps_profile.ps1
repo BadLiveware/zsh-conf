@@ -1,6 +1,7 @@
 ﻿
 
 # PSReadLine
+Import-Module PSReadLine
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-PSReadlineOption -ShowToolTips
 
@@ -19,7 +20,7 @@ Import-Module -Name posh-git
 Import-Module -Name oh-my-posh
 Set-Theme Paradox
 
-Remove-PSReadlineKeyHandler 'Ctrl+r'
+Remove-PSReadlineKeyHandler -Chord Ctrl+r
 Import-Module PSFzf
 
 ## Azure
