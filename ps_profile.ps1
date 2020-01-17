@@ -1,9 +1,8 @@
-﻿
-
-# PSReadLine
+﻿# PSReadLine
 Import-Module PSReadLine
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-PSReadlineOption -ShowToolTips
+#Remove-PSReadlineKeyHandler 'Ctrl+r'
 
 Import-Module -Name Get-ChildItemColor
 # Set l and ls alias to use the new Get-ChildItemColor cmdlets
@@ -20,8 +19,6 @@ Import-Module -Name posh-git
 Import-Module -Name oh-my-posh
 Set-Theme Paradox
 
-Remove-PSReadlineKeyHandler -Chord Ctrl+r
-Import-Module PSFzf
 
 ## Azure
 Enable-AzureRmAlias
@@ -42,13 +39,14 @@ function cUserWorkspace { Set-Location ~/source }
 Set-Alias cws cUserWorkspace -Option AllScope
 
 Set-Alias fcd cde
-
 Set-Alias lg lazygit
+Set-Alias which get-command
 
 
+Import-Module PSFzf -ArgumentList 'Alt+T','Alt+R'
 
-function fzf-invoke { Get-ChildItem | where-object { -not $_.PSIsContainer } | Invoke-Fzf | Invoke-Item }
-Set-Alias finvoke fzf-invoke
+function fzf-invoke { Get-ChildItem | where-object { -not $_.PSIsContainer } | Invoke-Fzf -Multi | Invoke-Item }
+Set-Alias fdo fzf-invoke
 
 function az-function-interact {
     #Requires -Module PSFzf
@@ -65,7 +63,7 @@ function az-function-interact {
         [ValidateSet("running", "stopped")]
         $State
     )
-    Write-Host "Searching for apps..." -ForegroundColor Green
+    Write-Host "Fetching apps..." -ForegroundColor Green
     $apps = az functionapp list --output json | convertfrom-json -AsHashtable
     
     if ($state) { 
@@ -83,6 +81,7 @@ function az-function-interact {
         return;
     }
 
+    Write-Host "Sending commands..." -ForegroundColor Green
     $selectedApps = $apps | where-object { $_.name -in $selectedNames }
     if ($selectedApps) { 
         $appIds = $selectedApps.id
