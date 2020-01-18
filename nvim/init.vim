@@ -18,8 +18,8 @@ Plug 'airblade/vim-gitgutter'
 " Language specific
 Plug 'PProvost/vim-ps1'
 
-" Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile' }
-" Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
 
 call plug#end()
 
@@ -32,10 +32,10 @@ set shell=pwsh.exe
 set shellcmdflag=-noprofile\ -Nologo\ -noninteractive\ -command
 set shellpipe=|
 set shellredir=>
-set pyx=3
 
 " Windows clipboard
 source $VIMRUNTIME/mswin.vim
+set keymodel-=stopsel
 
 set cursorline
 set colorcolumn=80
@@ -45,8 +45,8 @@ scriptencoding utf-8
 " Programs
 let g:python_host_prog = 'C:\Python27\python.exe' 
 let g:python3_host_prog = 'C:\Python38\python.exe' 
-let g:node_host_prog = 'C:\Users\flars\AppData\Roaming\npm\neovim-node-host.ps1' "C:\Program Files\nodejs\node.exe'
-
+set pyx=3
+let g:node_host_prog = 'C:\Users\flars\AppData\Roaming\npm\neovim-node-host.cmd' "C:\Program Files\nodejs\node.exe'
 
 "Completion
 set hidden
@@ -92,7 +92,6 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
-
 set noshowmode
 
 autocmd FileType lisp,clojure,scheme,powershell,vim RainbowParentheses
@@ -100,3 +99,4 @@ autocmd FileType lisp,clojure,scheme,powershell,vim RainbowParentheses
 
 " Mappings
 let mapleader = "\<Space>"
+inoremap jj <Esc>
