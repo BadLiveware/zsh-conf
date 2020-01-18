@@ -1,7 +1,32 @@
+call plug#begin('~/AppData/Local/nvim/plugged')
+" Aesthetics
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
+
+" Base functionality
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sensible'
+Plug 'jiangmiao/auto-pairs'
+Plug 'neoclide/coc.nvim', { 'branch': 'release'}
+
+" Program specific
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Language specific
+Plug 'PProvost/vim-ps1'
+
+Plug 'iamcco/coc-vimlsp', { 'do':'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-json', { 'do':'yarn install --frozen-lockfile' }
+
+call plug#end()
+
 " General
 language en_gb
 set spell spelllang=en_gb
-set relativenumber
+
+" Shell
 set shell=pwsh.exe
 set shellcmdflag=-noprofile\ -Nologo\ -noninteractive\ -command
 set shellpipe=|
@@ -10,36 +35,60 @@ set shellredir=>
 " Windows clipboard
 source $VIMRUNTIME/mswin.vim
 
-let mapleader ="\<Space>"
+set cursorline
+set colorcolumn=80
+set encoding=utf-8
+scriptencoding utf-8
 
-" Plugins
-call plug#begin('~/AppData/Local/nvim/plugged')
-Plug 'tpope/vim-sensible'
-Plug 'PProvost/vim-ps1'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'joshdick/onedark.vim'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'itchyny/lightline.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-commentary'
-call plug#end()
+" Completion
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
 
-"Deoplete settings
-let g:deoplete#enable_at_startup = 1
-let g:python3_host_prog = 'C:\Python38\python.exe'
-set completeopt-=preview
+inoremap <silent><expr> <c-space> coc#refresh()
 
-" Aerojump
-nmap <Leader>as <Plug>(AerojumpSpace)
-nmap <Leader>ab <Plug>(AerojumpBolt)
-nmap <Leader>aa <Plug>(AerojumpFromCursorBolt)
-nmap <Leader>ad <Plug>(AerojumpDefault) " Boring mode
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-" Theme
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! CocCurrentFunction()
+	return get(b:, 'coc_current_function', '')
+endfunction
+
+" Appearance
+set relativenumber
 colorscheme challenger_deep
 if has('nvim') || has('termguicolors')
-  set termguicolors
+	set termguicolors
 endif
-let g:lightline = { 'colorscheme': 'challenger_deep'}
+let g:lightline = {
+      \ 'colorscheme': 'challenger_deep',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste'  ],
+      \	 	    [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \		     [ 'percent' ],
+      \  	     [ 'fileformat' ],
+      \		     [ 'cocstatus', 'currentfunction' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
+set noshowmode
+
+autocmd FileType lisp,clojure,scheme,powershell,vim RainbowParentheses
+
+
+" Mappings
+let mapleader = "\<Space>"
