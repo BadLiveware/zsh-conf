@@ -8,8 +8,8 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'neoclide/coc.nvim', { 'branch': 'release'}
-Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release'}
+" Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
 
 " Program specific
 Plug 'tpope/vim-fugitive'
@@ -18,8 +18,11 @@ Plug 'airblade/vim-gitgutter'
 " Language specific
 Plug 'PProvost/vim-ps1'
 
-Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
+" Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile' }
+" Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
+" Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
+" Plug 'coc-extensions/coc-powershell', { 'do': 'yarn install --frozen-lockfile' }
+" Plug 'coc-extensions/coc-omnisharp', { 'do': 'yarn install --frozen-lockfile' }
 
 call plug#end()
 
@@ -27,20 +30,15 @@ call plug#end()
 language en_gb
 set spell spelllang=en_gb
 
+" Windows specifics 
+source $VIMRUNTIME/mswin.vim
+set keymodel-=stopsel
+
 " Shell
 set shell=pwsh.exe
 set shellcmdflag=-noprofile\ -Nologo\ -noninteractive\ -command
 set shellpipe=|
 set shellredir=>
-
-" Windows clipboard
-source $VIMRUNTIME/mswin.vim
-set keymodel-=stopsel
-
-set cursorline
-set colorcolumn=80
-set encoding=utf-8
-scriptencoding utf-8
 
 " Programs
 let g:python_host_prog = 'C:\Python27\python.exe' 
@@ -70,8 +68,16 @@ function! CocCurrentFunction()
 	return get(b:, 'coc_current_function', '')
 endfunction
 
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-json', 'coc-yaml', 'coc-powershell', 'coc-omnisharp', 'coc-python', 'coc-spell-checker']
+
+" Misc
+set encoding=utf-8
+scriptencoding utf-8
+
 " Appearance
 set relativenumber
+set cursorline
+set colorcolumn=80
 colorscheme challenger_deep
 if has('nvim') || has('termguicolors')
 	set termguicolors

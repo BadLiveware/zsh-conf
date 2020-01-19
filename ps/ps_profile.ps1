@@ -23,8 +23,6 @@ Set-Theme Paradox
 ## Azure
 Enable-AzureRmAlias
 
-
-
 #### Functions
 
 function touch {
