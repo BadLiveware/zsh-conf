@@ -17,13 +17,6 @@ Plug 'airblade/vim-gitgutter'
 
 " Language specific
 Plug 'PProvost/vim-ps1'
-
-" Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile' }
-" Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
-" Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
-" Plug 'coc-extensions/coc-powershell', { 'do': 'yarn install --frozen-lockfile' }
-" Plug 'coc-extensions/coc-omnisharp', { 'do': 'yarn install --frozen-lockfile' }
-
 call plug#end()
 
 " General
@@ -78,7 +71,7 @@ scriptencoding utf-8
 set relativenumber
 set cursorline
 set colorcolumn=80
-colorscheme challenger_deep
+silent! colorscheme challenger_deep
 if has('nvim') || has('termguicolors')
 	set termguicolors
 endif
@@ -100,7 +93,7 @@ let g:lightline = {
       \ }
 set noshowmode
 
-autocmd FileType lisp,clojure,scheme,powershell,vim RainbowParentheses
+silent! autocmd FileType lisp,clojure,scheme,powershell,vim RainbowParentheses
 
 
 " Mappings
