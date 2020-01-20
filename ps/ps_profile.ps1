@@ -1,8 +1,10 @@
 ﻿# PSReadLine
-# Import-Module PSReadLine
+rmo psreadline # Unload builtin version  
+Import-Module PSReadLine
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-PSReadlineOption -ShowToolTips
-#Remove-PSReadlineKeyHandler 'Ctrl+r'
+Remove-PSReadlineKeyHandler 'Ctrl+r' # This should get handled by PSFzf
+Import-Module PSFzf -ArgumentList 'Alt+t','Ctrl+r'
 
 Import-Module -Name Get-ChildItemColor
 # Set l and ls alias to use the new Get-ChildItemColor cmdlets
@@ -40,8 +42,6 @@ Set-Alias fcd cde
 Set-Alias lg lazygit
 Set-Alias which get-command
 
-Remove-PSReadlineKeyHandler 'Ctrl+r'
-Import-Module PSFzf
 
 function fzf-invoke { Get-ChildItem | where-object { -not $_.PSIsContainer } | Invoke-Fzf -Multi | Invoke-Item }
 Set-Alias fdo fzf-invoke
