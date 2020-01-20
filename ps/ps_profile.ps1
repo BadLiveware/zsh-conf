@@ -1,5 +1,5 @@
 ﻿# PSReadLine
-Import-Module PSReadLine
+# Import-Module PSReadLine
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-PSReadlineOption -ShowToolTips
 #Remove-PSReadlineKeyHandler 'Ctrl+r'
@@ -40,8 +40,8 @@ Set-Alias fcd cde
 Set-Alias lg lazygit
 Set-Alias which get-command
 
-
-Import-Module PSFzf -ArgumentList 'Alt+T','Alt+R'
+Remove-PSReadlineKeyHandler 'Ctrl+r'
+Import-Module PSFzf
 
 function fzf-invoke { Get-ChildItem | where-object { -not $_.PSIsContainer } | Invoke-Fzf -Multi | Invoke-Item }
 Set-Alias fdo fzf-invoke
