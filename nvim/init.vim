@@ -61,7 +61,7 @@ function! CocCurrentFunction()
 	return get(b:, 'coc_current_function', '')
 endfunction
 
-let g:coc_global_extensions = ['coc-vimlsp', 'coc-json', 'coc-yaml', 'coc-powershell', 'coc-omnisharp', 'coc-python', 'coc-spell-checker']
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-json', 'coc-yaml', 'coc-powershell', 'coc-omnisharp', 'coc-python', 'coc-spell-checker', 'coc-xml']
 
 " Indent
 set autoindent
