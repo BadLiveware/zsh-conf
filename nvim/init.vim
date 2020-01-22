@@ -62,6 +62,10 @@ endfunction
 
 let g:coc_global_extensions = ['coc-vimlsp', 'coc-json', 'coc-yaml', 'coc-powershell', 'coc-omnisharp', 'coc-python', 'coc-spell-checker', 'coc-xml']
 
+" Indent
+set autoindent
+filetype plugin indent on
+
 " Misc
 set encoding=utf-8
 scriptencoding utf-8
@@ -69,6 +73,8 @@ scriptencoding utf-8
 " Appearance
 set relativenumber
 set cursorline
+syntax enable
+set background=dark
 set colorcolumn=80
 silent! colorscheme challenger_deep
 if has('nvim') || has('termguicolors')
