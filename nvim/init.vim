@@ -103,4 +103,3 @@ silent! autocmd FileType lisp,clojure,scheme,powershell,vim RainbowParentheses
 
 " Mappings
 let mapleader = "\<Space>"
-inoremap jj <Esc>
