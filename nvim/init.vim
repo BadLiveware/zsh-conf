@@ -9,14 +9,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', { 'branch': 'release'}
-" Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
 
 " Program specific
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Language specific
-Plug 'PProvost/vim-ps1'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " General
