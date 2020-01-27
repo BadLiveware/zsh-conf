@@ -11,15 +11,18 @@ Import-Module -Name Get-ChildItemColor
 Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
-Import-Module -Name posh-git
+# Import-Module -Name posh-git
 # Start SshAgent if not already
 # Need this if you are using github as your remote git repository
 # if (! (ps | ? { $_.Name -eq 'ssh-agent' })) {
 #     Start-SshAgent
 # }
 
-Import-Module -Name oh-my-posh
-Set-Theme Paradox
+# Import-Module -Name oh-my-posh
+# Set-Theme Paradox
+
+
+Invoke-Expression (&starship init powershell)
 
 
 ## Azure
