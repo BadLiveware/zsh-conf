@@ -46,7 +46,7 @@ Set-Alias lg lazygit
 Set-Alias which get-command
 
 function Get-GitStatus { & git status $args }
-Set-Alias g Get-GitStatus
+Set-Alias -Name s -Value Get-GitStatus
 function Set-GitCommit { & git commit -am $args }
 Set-Alias -Name c -Value Set-GitCommit 
 function Set-GitPushAll { & git push --all }
