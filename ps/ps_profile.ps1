@@ -1,5 +1,5 @@
 ﻿# PSReadLine
-rmo psreadline # Unload builtin version  
+Remove-Module psreadline # Unload builtin version  
 Import-Module PSReadLine
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-PSReadlineOption -ShowToolTips
@@ -45,6 +45,12 @@ Set-Alias fcd cde
 Set-Alias lg lazygit
 Set-Alias which get-command
 
+function Get-GitStatus { & git status $args }
+Set-Alias g Get-GitStatus
+function Set-GitCommit { & git commit -am $args }
+Set-Alias -Name c -Value Set-GitCommit 
+function Set-GitPushAll { & git push --all }
+Set-Alias -Name gpa -Value Set-GitPushAll
 
 function fzf-invoke { Get-ChildItem | where-object { -not $_.PSIsContainer } | Invoke-Fzf -Multi | Invoke-Item }
 Set-Alias fdo fzf-invoke
