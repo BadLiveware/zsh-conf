@@ -4,7 +4,7 @@ Import-Module PSReadLine
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-PSReadlineOption -ShowToolTips
 Remove-PSReadlineKeyHandler 'Ctrl+r' # This should get handled by PSFzf
-Import-Module PSFzf -ArgumentList 'Alt+t','Ctrl+r'
+Import-Module PSFzf -ArgumentList 'Alt+t', 'Ctrl+r'
 
 Import-Module -Name Get-ChildItemColor
 # Set l and ls alias to use the new Get-ChildItemColor cmdlets
@@ -55,49 +55,8 @@ Set-Alias -Name gpa -Value Set-GitPushAll
 function fzf-invoke { Get-ChildItem | where-object { -not $_.PSIsContainer } | Invoke-Fzf -Multi | Invoke-Item }
 Set-Alias fdo fzf-invoke
 
-function az-function-interact {
-    #Requires -Module PSFzf
-    #Requires -Assembly 'az'
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory = $true, Position = 0)]
-        [string]
-        [ValidateSet("stop", "start", "restart", "show")]
-        $Action,
-        
-        [Parameter(Mandatory = $false, Position = 1)]
-        [string]
-        [ValidateSet("running", "stopped")]
-        $State
-    )
-    Write-Host "Fetching apps..." -ForegroundColor Green
-    $apps = az functionapp list --output json | convertfrom-json -AsHashtable
-    
-    if ($state) { 
-        $apps = $apps | where-object { $_.state -like $State }
-    }
+Import-Module $PSScriptRoot/modules/Set-AzureFunctionState.psm1
+Set-Alias azfun Set-AzureFunctionState
 
-    if (!$apps) {
-        Write-Error "Found no apps"
-        return;
-    }
-    
-    $selectedNames = $apps | select-object -Property name, id, resourcegroup | sort-object resourcegroup | invoke-fzf -Multi
-    if (-not $selectedNames) {
-        Write-Error "No valid input select from fzf"
-        return;
-    }
-
-    Write-Host "Sending commands..." -ForegroundColor Green
-    $selectedApps = $apps | where-object { $_.name -in $selectedNames }
-    if ($selectedApps) { 
-        $appIds = $selectedApps.id
-        az functionapp $Action --ids $appIds
-        Write-Host "Performed $Action on "
-        $selectedNames | format-table @{label = "Name"; Expression = { $_ } }
-    }
-    else { 
-        Write-Error "No valid selected app found"
-    }
-}
-Set-Alias azfun az-function-interact
+Import-Module $PSScriptRoot/modules/Set-GitBranchFuzzily.psm1
+Set-Alias -Name gcf -Value Set-GitBranchFuzzily
