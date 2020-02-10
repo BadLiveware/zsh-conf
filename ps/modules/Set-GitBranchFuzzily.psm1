@@ -2,10 +2,13 @@ function Set-GitBranchFuzzily {
     # Requires -Modules PSFzf
 
     $RemoteBranchPrefix = "remotes/origin/";
+    Branches to filter from output, e.g. remotes/origin/HEAD
+    $FilterBranches = "remotes/origin/HEAD*", "`* *";
 
     $Branches = & git branch -a;
-    $FilteredBranches = $Branches | Foreach-Object { $_.Replace($RemoteBranchPrefix, "").Trim() } | Sort-Object -CaseSensitive | Get-Unique;
-    $SelectedBranch = $FilteredBranches | Invoke-Fzf;
+    $FilteredBranches = $Branches | Where-Object -FilterScript
+    $UniqueBranches = $FilteredBranches | Foreach-Object { $_.Replace($RemoteBranchPrefix, "").Trim() } | Sort-Object -CaseSensitive | Get-Unique;
+    $SelectedBranch = $UniqueBranches | Invoke-Fzf;
 
     if ($SelectedBranch -match $RemoteBranchPrefix) {
         $SelectedBranch = $SelectedBranch.Replace($RemoteBranchPrefix, "").Trim();
