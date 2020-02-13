@@ -68,3 +68,5 @@ Set-Alias azfun Set-AzureFunctionState
 
 Import-Module $PSScriptRoot/modules/Set-GitBranchFuzzily.psm1 -Force
 Set-Alias -Name gcf -Value Set-GitBranchFuzzily
+
+Import-Module $PSScriptRoot/modules/Update-AllModules.psm1 -Force
