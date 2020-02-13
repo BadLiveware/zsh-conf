@@ -30,10 +30,18 @@ Enable-AzureRmAlias
 
 #### Functions
 
-function touch {
+function Invoke-Profile { 
+    Write-Host "Reloading profile..."
+    . $PSCommandPath 
+}
+Set-Alias -Name reload -Value Invoke-Profile
+
+function Add-NewEmptyFile {
     param ([parameter(Position = 0)][string] $Filename)
     New-Item -ItemType file $Filename
 }
+Set-Alias -Name touch -Value Add-NewEmptyFile;
+
 # Helper function to set location to the User Profile directory
 function cUserProfile { Set-Location ~ }
 Set-Alias ~ cUserProfile -Option AllScope
@@ -55,8 +63,8 @@ Set-Alias -Name gpa -Value Set-GitPushAll
 function fzf-invoke { Get-ChildItem | where-object { -not $_.PSIsContainer } | Invoke-Fzf -Multi | Invoke-Item }
 Set-Alias fdo fzf-invoke
 
-Import-Module $PSScriptRoot/modules/Set-AzureFunctionState.psm1
+Import-Module $PSScriptRoot/modules/Set-AzureFunctionState.psm1 -Force
 Set-Alias azfun Set-AzureFunctionState
 
-Import-Module $PSScriptRoot/modules/Set-GitBranchFuzzily.psm1
+Import-Module $PSScriptRoot/modules/Set-GitBranchFuzzily.psm1 -Force
 Set-Alias -Name gcf -Value Set-GitBranchFuzzily
