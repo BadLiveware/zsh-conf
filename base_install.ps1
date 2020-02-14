@@ -13,9 +13,9 @@ Write-Host "Installing editors and IDEs components" -ForegroundColor Yellow
 & choco install neovim visualstudio vscode winmerge notepadplusplus.install --yes --limit-output
 
 trite-Host "Installing python components" -ForegroundColor Green
-python -m pip install --upgrade pip
+& python -m pip install --upgrade pip
 & pip install glances
 
 Write-Host "Installing powershell modules"
-$PowershellModules = "PSReadLine", "PSEverything", "oh-my-posh", "posh-git", "PSFzf";
+$PowershellModules = "PSEverything", "oh-my-posh", "posh-git", "PSFzf"; # PSReadLine is built-in for powershell-core 6
 $PowershellModules | ForEach-Object { & pwsh.exe -NonInteractive -NoProfile -NoLogo -Command Install-Module -Name $_ -AllowPrerelease }
