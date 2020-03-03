@@ -34,39 +34,44 @@ function Invoke-Profile {
     Write-Host "Reloading profile..."
     . $PSCommandPath 
 }
-Set-Alias -Name reload -Value Invoke-Profile
+Set-Alias -Name reload -Value Invoke-Profile -Force
 
-function Add-NewEmptyFile {
-    param ([parameter(Position = 0)][string] $Filename)
-    New-Item -ItemType file $Filename
-}
-Set-Alias -Name touch -Value Add-NewEmptyFile;
+Set-Alias fcd cde -Force
+Set-Alias lg lazygit -Force
+Set-Alias which get-command -Force
 
 # Helper function to set location to the User Profile directory
 function cUserProfile { Set-Location ~ }
-Set-Alias ~ cUserProfile -Option AllScope
+Set-Alias -Name ~ -Value cUserProfile -Option AllScope -Force
 
 function cUserWorkspace { Set-Location ~/source }
-Set-Alias cws cUserWorkspace -Option AllScope
-
-Set-Alias fcd cde
-Set-Alias lg lazygit
-Set-Alias which get-command
-
-function Get-GitStatus { & git status $args }
-Set-Alias -Name s -Value Get-GitStatus
-function Set-GitCommit { & git commit -am $args }
-Set-Alias -Name c -Value Set-GitCommit 
-function Set-GitPushAll { & git push --all }
-Set-Alias -Name gpa -Value Set-GitPushAll
+Set-Alias -Name cws -Value cUserWorkspace -Option AllScope -Force
 
 function fzf-invoke { Get-ChildItem | where-object { -not $_.PSIsContainer } | Invoke-Fzf -Multi | Invoke-Item }
-Set-Alias fdo fzf-invoke
+Set-Alias -Name fi -Value fzf-invoke -Force
+
+# Git
+function Get-GitStatus { & git status $args }
+Set-Alias -Name s -Value Get-GitStatus -Force
+function Set-GitCommit { & git commit -am $args }
+Set-Alias -Name c -Value Set-GitCommit -Force
+function Set-GitPushAll { & git push --all }
+Set-Alias -Name gpa -Value Set-GitPushAll -Force
+
+# Larger modules
 
 Import-Module $PSScriptRoot/modules/Set-AzureFunctionState.psm1 -Force
-Set-Alias azfun Set-AzureFunctionState
+Set-Alias -Name azfun -Value Set-AzureFunctionState -Force
 
 Import-Module $PSScriptRoot/modules/Set-GitBranchFuzzily.psm1 -Force
-Set-Alias -Name gcf -Value Set-GitBranchFuzzily
+Set-Alias -Name gcf -Value Set-GitBranchFuzzily -Force
+
+Import-Module $PSScriptRoot/modules/Add-NewEmptyFile.psm1 -Force
+Set-Alias -Name touch -Value Add-NewEmptyFile -Force
+
+Import-Module $PSScriptRoot/modules/Invoke-ActionOnFuzzyTarget.psm1 -Force
+Set-Alias -Name fdo -Value Invoke-ActionOnFuzzyTarget -Force
 
 Import-Module $PSScriptRoot/modules/Update-AllModules.psm1 -Force
+
+
