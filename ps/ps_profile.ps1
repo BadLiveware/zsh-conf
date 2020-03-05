@@ -72,6 +72,9 @@ Set-Alias -Name touch -Value Add-NewEmptyFile -Force
 Import-Module $PSScriptRoot/modules/Invoke-ActionOnFuzzyTarget.psm1 -Force
 Set-Alias -Name fdo -Value Invoke-ActionOnFuzzyTarget -Force
 
+Import-Module $PSScriptRoot/modules/Invoke-AsAdministrator.psm1 -Force
+Set-Alias -Name su -Value Invoke-AsAdministrator -Force
+
 Import-Module $PSScriptRoot/modules/Update-AllModules.psm1 -Force
 
 
