@@ -1,10 +1,10 @@
 ﻿# PSReadLine
 Remove-Module psreadline # Unload builtin version  
-Import-Module PSReadLine
+Import-Module PSReadLine -Force
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-PSReadlineOption -ShowToolTips
 Remove-PSReadlineKeyHandler 'Ctrl+r' # This should get handled by PSFzf
-Import-Module PSFzf -ArgumentList 'Alt+t', 'Ctrl+r'
+Import-Module PSFzf -ArgumentList 'Alt+t', 'Ctrl+r' -Force
 
 Import-Module -Name Get-ChildItemColor
 # Set l and ls alias to use the new Get-ChildItemColor cmdlets
@@ -74,6 +74,9 @@ Set-Alias -Name fdo -Value Invoke-ActionOnFuzzyTarget -Force
 
 Import-Module $PSScriptRoot/modules/Invoke-AsAdministrator.psm1 -Force
 Set-Alias -Name su -Value Invoke-AsAdministrator -Force
+
+Import-Module $PSScriptRoot/modules/Ping-Endpoint.psm1 -Force
+Set-Alias -Name telnet -Value Ping-Endpoint -Force
 
 Import-Module $PSScriptRoot/modules/Update-AllModules.psm1 -Force
 
