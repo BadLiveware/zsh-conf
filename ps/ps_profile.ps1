@@ -78,6 +78,10 @@ Set-Alias -Name su -Value Invoke-AsAdministrator -Force
 Import-Module $PSScriptRoot/modules/Ping-Endpoint.psm1 -Force
 Set-Alias -Name telnet -Value Ping-Endpoint -Force
 
+Import-Module $PSScriptRoot/modules/Run-AzPipelineFuzzily.psm1 -Force
+
+Import-Module $PSScriptRoot/modules/Invoke-Key.psm1 -Force
+
 Import-Module $PSScriptRoot/modules/Update-AllModules.psm1 -Force
 
 
