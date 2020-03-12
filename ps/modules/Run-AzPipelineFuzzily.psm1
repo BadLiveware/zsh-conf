@@ -1,3 +1,16 @@
+#Requires -Module az
+#Requires -Module PSFzf
+
+
+function Start-PipelinesFuzzily {
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [string] 
+        $Branch = "master"
+    )
+    Get-PipelineNamesFuzzily | % { Start-Build -PipelineName $_.name -Branch $Branch }
+}
+
 function Start-Build {
     param (
         [Parameter(Mandatory = $true, Position = 0)]
@@ -22,6 +35,16 @@ function Start-Build {
     $Result
 }
 
+function Get-Pipelines {
+    Invoke-Expression "az pipelines list" | ConvertFrom-Json | Select-Object -Property name,id    
+}
+
+function Get-PipelineNamesFuzzily {
+    #Requires -Module PSFzf
+    $SelectedPipelines = Get-Pipelines | Tee-Object -Variable Pipelines | Invoke-Fzf -Multi
+    $Pipelines | Where-Object -Property name -in -value $SelectedPipelines
+}
+
 function Wait-BuildComplete {
     param (
         [Parameter(Mandatory = $true, Position=0, ValueFromPipeline)]
@@ -34,20 +57,10 @@ function Wait-BuildComplete {
         [int]
         $PollInterval = 1000
     )
-
-    while ((Get-RunProgress $BuildId) -eq "inProgress") {
+    while ((Get-RunProgress $BuildId) -in "inProgress", "notStarted") {
         Write-Host "Waiting for $BuildId $PipelineName"
         Start-Sleep -Milliseconds $PollInterval
     }
-}
-
-function Get-PipelineNames {
-    Invoke-Expression "az pipelines list" | ConvertFrom-Json | Select-Object -Property name,id    
-}
-
-function Get-PipelineNamesFuzzily {
-    #Requires -Module PSFzf
-    Get-PipelineNames | Where-Object -Property name -in -Value ($Pipelines.name | Invoke-Fzf -Multi)
 }
 
 function Get-RunProgress {
@@ -56,17 +69,37 @@ function Get-RunProgress {
         [int]
         $RunId
     )
-    (Invoke-Expression "az pipelines runs show --id $RunId 2>&1 | Out-Null" | ConvertFrom-Json).status
+    (Invoke-Expression "az pipelines runs show --id $RunId" | ConvertFrom-Json).status
 }
 
-# function Get-LatetestBuildDefinition {
-#     param (
+function Start-Release {
+    param(
+        [Parameter(mandatory=$false)]
+        [string]
+        $Branch = ""
+    )
+    if ($Branch -eq "") {
+        Write-Host "No branch parameter given, using HEAD"
+        $Branch = Invoke-Expression "git rev-parse --abbrev-ref HEAD"
+    }
 
-#     )
-# }
+    Write-Host "Running on branch: " -ForegroundColor Yellow -NoNewline
+    Write-Host "$Branch" -ForegroundColor Cyan
 
-# function Start-Release {
-#     param (
+    $SelectedArtifacts = Get-LastBuildArtifact | Tee-Object -Variable BuildArtifacts | Invoke-Fzf -Multi
+}
 
-#     )
-# }
+function Get-LastBuildArtifact {
+    param (
+        [Parameter(mandatory=$true,position=0)]
+        [string]
+        $Branch
+    )
+
+    Invoke-Expression "az pipelines build list" | convertfrom-json
+    | where-object -Property sourceBranch -EQ -value "refs/heads/$Branch"
+    | ForEach-Object { [pscustomobject]@{ name = $_.definition.name; buildId = $_.id; finishTime = $_.finishTime } }
+    | Sort-Object -Stable -Property finishTime -Descending
+    | Group-Object -Property name 
+    | ForEach-Object { $_.Group[0] }
+}
