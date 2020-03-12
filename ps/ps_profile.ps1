@@ -45,7 +45,10 @@ function cUserProfile { Set-Location ~ }
 Set-Alias -Name ~ -Value cUserProfile -Option AllScope -Force
 
 function cUserWorkspace { Set-Location ~/source }
-Set-Alias -Name cws -Value cUserWorkspace -Option AllScope -Force
+Set-Alias -Name src -Value cUserWorkspace -Option AllScope -Force
+
+function Set-PathtoConfig { Set-Location $PSScriptRoot/.. }
+Set-Alias -Name config -Value Set-PathtoConfig -Option AllScope -Force
 
 function fzf-invoke { Get-ChildItem | where-object { -not $_.PSIsContainer } | Invoke-Fzf -Multi | Invoke-Item }
 Set-Alias -Name fi -Value fzf-invoke -Force
