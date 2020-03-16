@@ -1,9 +1,14 @@
-﻿# PSReadLine
+﻿Write-Host "Starting loading profile..." -ForegroundColor Yellow
+
+Write-Host "Loading PSReadLine options..." -ForegroundColor Cyan
+# PSReadLine
 Remove-Module psreadline # Unload builtin version  
 Import-Module PSReadLine -Force
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-PSReadlineOption -ShowToolTips
 Remove-PSReadlineKeyHandler 'Ctrl+r' # This should get handled by PSFzf
+
+Write-Host "Importing base modules options..." -ForegroundColor Cyan
 Import-Module PSFzf -ArgumentList 'Alt+t', 'Ctrl+r' -Force
 
 Import-Module -Name Get-ChildItemColor
@@ -22,6 +27,7 @@ Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 # Set-Theme Paradox
 
 
+Write-Host "Starting prompt..." -ForegroundColor Cyan
 Invoke-Expression (&starship init powershell)
 
 
@@ -29,7 +35,7 @@ Invoke-Expression (&starship init powershell)
 Enable-AzureRmAlias
 
 #### Functions
-
+Write-Host "Loading custom modules..." -ForegroundColor Cyan
 function Invoke-Profile { 
     Write-Host "Reloading profile..."
     . $PSCommandPath 
@@ -62,6 +68,7 @@ function Set-GitPushAll { & git push --all }
 Set-Alias -Name gpa -Value Set-GitPushAll -Force
 
 # Larger modules
+Write-Host "Loading custom modules in: $PSScriptRoot\modules\" -ForegroundColor Cyan
 
 Import-Module $PSScriptRoot/modules/Set-AzureFunctionState.psm1 -Force
 Set-Alias -Name azfun -Value Set-AzureFunctionState -Force
@@ -87,4 +94,4 @@ Import-Module $PSScriptRoot/modules/Invoke-Key.psm1 -Force
 
 Import-Module $PSScriptRoot/modules/Update-AllModules.psm1 -Force
 
-
+Write-Host "Finished loading profile..." -ForegroundColor Yellow

@@ -36,7 +36,7 @@ function Start-Build {
 }
 
 function Get-Pipelines {
-    Invoke-Expression "az pipelines list" | ConvertFrom-Json | Select-Object -Property name,id    
+    Invoke-Expression "az pipelines list" | ConvertFrom-Json | Select-Object -Property name, id    
 }
 
 function Get-PipelineNamesFuzzily {
@@ -47,13 +47,13 @@ function Get-PipelineNamesFuzzily {
 
 function Wait-BuildComplete {
     param (
-        [Parameter(Mandatory = $true, Position=0, ValueFromPipeline)]
+        [Parameter(Mandatory = $true, Position = 0, ValueFromPipeline)]
         [int]
         $BuildId,
-        [Parameter(Mandatory = $false, Position=1)]
+        [Parameter(Mandatory = $false, Position = 1)]
         [string]
         $PipelineName,
-        [Parameter(Mandatory = $false, Position=2)]
+        [Parameter(Mandatory = $false, Position = 2)]
         [int]
         $PollInterval = 1000
     )
@@ -65,16 +65,16 @@ function Wait-BuildComplete {
 
 function Get-RunProgress {
     param (
-        [Parameter(Mandatory = $true, Position=0)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [int]
         $RunId
     )
     (Invoke-Expression "az pipelines runs show --id $RunId" | ConvertFrom-Json).status
 }
 
-function Start-Release {
+function Start-ReleaseFuzzily {
     param(
-        [Parameter(mandatory=$false)]
+        [Parameter(mandatory = $false)]
         [string]
         $Branch = ""
     )
@@ -87,18 +87,32 @@ function Start-Release {
     Write-Host "$Branch" -ForegroundColor Cyan
 
     $SelectedArtifacts = Get-LastBuildArtifact | Tee-Object -Variable BuildArtifacts | Invoke-Fzf -Multi
+    $BuildArtifacts | Select-Object Start-Release
+}
+
+function Start-Release {
+    param(
+        [string]
+        $BuildName,
+        [string]
+        $BuildNumber        
+    )
+
+    
 }
 
 function Get-LastBuildArtifact {
     param (
-        [Parameter(mandatory=$true,position=0)]
+        [Parameter(mandatory = $true, position = 0)]
         [string]
         $Branch
     )
 
     Invoke-Expression "az pipelines build list" | convertfrom-json
     | where-object -Property sourceBranch -EQ -value "refs/heads/$Branch"
-    | ForEach-Object { [pscustomobject]@{ name = $_.definition.name; buildId = $_.id; finishTime = $_.finishTime } }
+    | ForEach-Object { [pscustomobject]@{ name = $_.definition.name; 
+                                          buildNumber = $_.buildNumber; 
+                                          finishTime = $_.finishTime } }
     | Sort-Object -Stable -Property finishTime -Descending
     | Group-Object -Property name 
     | ForEach-Object { $_.Group[0] }
