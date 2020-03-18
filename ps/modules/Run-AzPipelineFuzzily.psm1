@@ -1,7 +1,3 @@
-#Requires -Module az
-#Requires -Module PSFzf
-
-
 function Start-PipelinesFuzzily {
     param (
         [Parameter(Mandatory = $false, Position = 0)]
@@ -90,17 +86,6 @@ function Start-ReleaseFuzzily {
     $BuildArtifacts | Select-Object Start-Release
 }
 
-function Start-Release {
-    param(
-        [string]
-        $BuildName,
-        [string]
-        $BuildNumber        
-    )
-
-    
-}
-
 function Get-LastBuildArtifact {
     param (
         [Parameter(mandatory = $true, position = 0)]
@@ -117,3 +102,14 @@ function Get-LastBuildArtifact {
     | Group-Object -Property name 
     | ForEach-Object { $_.Group[0] }
 }
+
+# function Start-Release {
+#     param(
+#         [string]
+#         $BuildName,
+#         [string]
+#         $BuildNumber        
+#     )
+
+    
+# }

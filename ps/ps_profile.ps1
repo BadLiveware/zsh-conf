@@ -35,7 +35,7 @@ Invoke-Expression (&starship init powershell)
 Enable-AzureRmAlias
 
 #### Functions
-Write-Host "Loading custom modules..." -ForegroundColor Cyan
+Write-Host "Loading custom functions..." -ForegroundColor Cyan
 function Invoke-Profile { 
     Write-Host "Reloading profile..."
     . $PSCommandPath 
