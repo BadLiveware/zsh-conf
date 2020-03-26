@@ -35,9 +35,10 @@ function Import-BaseModules {
   Write-Host "Importing base modules options..." -ForegroundColor Cyan
   $Env:FZF_DEFAULT_OPTS = "
   --height 40%
-  --reverse  
-  --color dark
+  --reverse 
   --border
+  --color border:255
+  --cycle
   "
   Import-Module PSFzf -ArgumentList 'Alt+t', 'Ctrl+r' -Force
 

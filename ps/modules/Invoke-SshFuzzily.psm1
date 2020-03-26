@@ -26,7 +26,7 @@ function Select-Host {
         $Hosts
     )
     $Hosts
-    | fzf --height 10 --header "Select the target for ssh"
+    | fzf --height 10 --header "Select the target for ssh" --prompt "> ssh "
     | Foreach-Object { $_.split(" ")[0] }
 }
 
