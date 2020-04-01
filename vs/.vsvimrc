@@ -1,0 +1,20 @@
+set vsvim_useeditorindent
+set relativenumber
+set cursorline
+
+map gk :vsc Edit.PreviousMethod<CR>
+map gi :vsc Edit.GoToImplementation<CR>
+map gj :vsc Edit.NextMethod<CR>
+map gr :vsc Edit.FindAllReferences<CR>
+
+noremap + :vsc Edit.CommentSelection <return>
+noremap - :vsc Edit.UncommentSelection <return>
+
+nmap <C-O> :vsc View.NavigateBackward<CR>
+nmap <C-I> :vsc View.NavigateForward<CR>
+vmap <C-O> :vsc View.NavigateBackward<CR>
+vmap <C-I> :vsc View.NavigateForward<CR>
+
+" Requires Toggle Comment extension
+nnoremap gcc :vsc Edit.ToggleComment<CR>
+vnoremap gc :vsc Edit.ToggleComment<CR><Esc><Esc>
