@@ -1,1 +1,1 @@
-mklink /H %localappdata%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\profiles.json .\profiles.json
+mklink /H %localappdata%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\profiles.json ..\profiles.json

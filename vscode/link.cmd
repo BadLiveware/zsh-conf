@@ -1,0 +1,1 @@
+mklink /H %APPDATA%\Code\User\settings.json .\settings.json
