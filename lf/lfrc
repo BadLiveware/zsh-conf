@@ -1,1 +1,6 @@
-C:/Users/frla01/AppData/Local/lf/lfrc
+set relativenumber
+set wrapscroll 
+set incsearch
+set color256
+
+set shell 'pwsh'
