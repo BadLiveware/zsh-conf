@@ -7,7 +7,7 @@
         "defaults": {
             "colorScheme": "Campbell",
             "cursorShape": "bar",
-            "fontFace": "Caskaydia Cove Regular Nerd Font Complete",
+            "fontFace": "CaskaydiaCove NF",
             "fontSize": 12
         },
         "list": [
@@ -104,27 +104,27 @@
         },
         {
             "command": "splitHorizontal",
-            "keys": "ctrl+shift+down"
+            "keys": "alt+shift+down"
         },
         {
             "command": "splitVertical",
-            "keys": "ctrl+shift+right"
+            "keys": "alt+shift+right"
         },
         {
             "command": "moveFocusRight",
-            "keys": "ctrl+right"
+            "keys": "alt+right"
         },
         {
             "command": "moveFocusLeft",
-            "keys": "ctrl+left"
+            "keys": "alt+left"
         },
         {
             "command": "moveFocusUp",
-            "keys": "ctrl+up"
+            "keys": "alt+up"
         },
         {
             "command": "moveFocusDown",
-            "keys": "ctrl+down"
+            "keys": "alt+down"
         },
         {
             "command": "switchToTab0",
