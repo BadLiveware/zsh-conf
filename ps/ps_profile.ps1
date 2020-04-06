@@ -120,7 +120,7 @@ function Import-CustomModules {
   Import-CustomModule Set-GitBranchFuzzily gcf
   Import-CustomModule Add-NewEmptyFile touch 
   Import-CustomModule Invoke-ActionOnFuzzyTarget fdo 
-  Import-CustomModule Invoke-AsAdministrator su 
+  # Import-CustomModule Invoke-AsAdministrator su 
   Import-CustomModule Invoke-SshFuzzily sshf
   Import-CustomModule Invoke-MstscFuzzily rdpf
   Import-CustomModule Run-AzPipelineFuzzily 
