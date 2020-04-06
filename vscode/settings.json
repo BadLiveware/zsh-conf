@@ -1,0 +1,67 @@
+{
+    "editor.fontSize": 12,
+    "git.autofetch": true,
+    "workbench.tree.indent": 12,
+    "editor.fontFamily": "Iosevka Nerd, Fira Code, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.minimap.renderCharacters": false,
+    "window.zoomLevel": 0,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/protractor.conf.js": true,
+        "**/karma.conf.js": true,
+        "**/*.js.map": true
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "C:/tools/neovim/Neovim/bin/nvim.exe",
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": [
+        "#8FBCBB",
+        "#434C5E"
+    ],
+    "vim.statusBarColors.insert": "#BF616A",
+    "vim.statusBarColors.visual": "#B48EAD",
+    "vim.statusBarColors.visualline": "#B48EAD",
+    "vim.statusBarColors.visualblock": "#A3BE8C",
+    "vim.statusBarColors.replace": "#D08770",
+    "vim.highlightedyank.enable": true,
+    "vim.handleKeys": {
+        "<f2>": false,
+        "<C-t>": false,
+    },
+    "vim.surround": true,
+    "prettier.endOfLine": "auto",
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationAfterEveryPipeline",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#8FBCBB",
+        "statusBar.noFolderBackground": "#8FBCBB",
+        "statusBar.debuggingBackground": "#8FBCBB",
+        "statusBar.foreground": "#434C5E"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.formatOnSave": false,
+    "git.confirmSync": false,
+    "editor.minimap.enabled": false,
+    "git.path": "C:/Program Files/Git/cmd/git.exe",
+    "azure.resourceFilter": [
+        "1063e17f-0bdd-44f1-9b47-8a99cc3d9e5c/52c9c2ce-ed82-4143-90f8-8274ca125984"
+    ],
+    "sync.gist": "e14b95bf3f98356653251c3455197a41",
+    "sync.autoUpload": true,
+    "sync.autoDownload": true
+}
