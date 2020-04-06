@@ -4,12 +4,12 @@
 
 $tmp = [System.IO.Path]::GetTempFileName()
 lf -last-dir-path="$tmp" $args
-if (test-path -pathtype leaf "$tmp") {
-    $dir = type "$tmp"
-    remove-item -force "$tmp"
-    if (test-path -pathtype container "$dir") {
+if (Test-Path -pathtype leaf "$tmp") {
+    $dir = Get-Content "$tmp"
+    Remove-Item -force "$tmp"
+    if (Test-Path -pathtype container "$dir") {
         if ("$dir" -ne "$pwd") {
-            cd "$dir"
+            Set-Location "$dir"
         }
     }
 }

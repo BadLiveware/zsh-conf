@@ -14,6 +14,7 @@
   . Import-Prompt 
   . Import-InlineFunctions
   . Import-CustomModules
+  . Setup-Autocomplete
 
   ## Azure
   Enable-AzureRmAlias
@@ -33,13 +34,6 @@ function Import-PSReadLine {
 
 function Import-BaseModules {
   Write-Host "Importing base modules options..." -ForegroundColor Cyan
-  $Env:FZF_DEFAULT_OPTS = "
-  --height 40%
-  --reverse 
-  --border
-  --color border:255
-  --cycle
-  "
   Import-Module PSFzf -ArgumentList 'Alt+t', 'Ctrl+r' -Force
 
 
@@ -132,6 +126,16 @@ function Import-CustomModules {
   Import-CustomModule Run-AzPipelineFuzzily 
   Import-CustomModule Invoke-Key 
   Import-CustomModule Update-AllModules 
+}
+
+function Setup-Autocomplete {
+  # PowerShell parameter completion shim for the dotnet CLI
+  Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+    param($commandName, $wordToComplete, $cursorPosition)
+    dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
+      [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+    }
+  }
 }
 
 . Load-Profile
