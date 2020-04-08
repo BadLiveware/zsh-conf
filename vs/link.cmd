@@ -1,1 +1,1 @@
-mklink /H %userprofile%/.vsvimrc .vsvimrc
+mklink /H %userprofile%\.vsvimrc .vsvimrc
