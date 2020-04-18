@@ -6,9 +6,16 @@ map gk :vsc Edit.PreviousMethod<CR>
 map gi :vsc Edit.GoToImplementation<CR>
 map gj :vsc Edit.NextMethod<CR>
 map gr :vsc Edit.FindAllReferences<CR>
+nmap <F7> :vsc Edit.FormatDocument<CR>
+vmap <F7> :vsc Edit.FormatSelection<CR>
 
-noremap + :vsc Edit.CommentSelection <return>
-noremap - :vsc Edit.UncommentSelection <return>
+" Start VS rename, and enter insert mode at the start of the current word
+" viwo enters insert mode at the start of the current word(b would take you to previous word if 
+" you already were at the start)
+nmap <F2> :vsc Refactor.Rename<CR>viwo
+
+noremap + :vsc Edit.CommentSelection<CR>
+noremap - :vsc Edit.UncommentSelection<CR>
 
 nmap <C-O> :vsc View.NavigateBackward<CR>
 nmap <C-I> :vsc View.NavigateForward<CR>

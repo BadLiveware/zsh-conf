@@ -1,6 +1,5 @@
-set relativenumber
-set wrapscroll 
-set incsearch
-set color256
+set relativenumber on
+set incsearch on
+set color256 on
 
-set shell 'pwsh'
+set previewer bat

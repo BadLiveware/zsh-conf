@@ -10,8 +10,8 @@
         "defaults": {
             "colorScheme": "Campbell",
             "cursorShape": "bar",
-            "fontFace": "CaskaydiaCove NF",
-            "fontSize": 12
+            "fontFace": "JetbrainsMono Nerd Font",
+            "fontSize": 11
         },
         "list": [
             {
@@ -99,15 +99,15 @@
         },
         {
             "command": "paste",
-            "keys": "ctrl-v"
+            "keys": "ctrl+v"
         },
         {
             "command": "copy",
-            "keys": "ctrl-c"
+            "keys": "ctrl+c"
         },
         {
             "command": "copy",
-            "keys": "ctrl-x"
+            "keys": "ctrl+x"
         },
         {
             "command": "splitHorizontal",
