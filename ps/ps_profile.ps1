@@ -128,6 +128,7 @@ function Import-CustomModules {
   Import-CustomModule Run-AzPipelineFuzzily 
   Import-CustomModule Invoke-Key 
   Import-CustomModule Update-AllModules 
+  Import-CustomModule Git-Fzf
 }
 
 function Setup-Autocomplete {

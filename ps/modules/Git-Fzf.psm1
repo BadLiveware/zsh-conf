@@ -3,8 +3,8 @@ function Show-GitLog {
 
     Check-Fzf
     Check-Git
-
-    git log --oneline --color=always
+    
+    git -c log.date=relative log --color=always --pretty=format:"%C(auto,yellow)%h%C(auto,magenta) %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(7,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D"
     | fzf @FzfCommonOpt --preview "git diff --stat --color=always {1}" 
     | ForEach-Object { $_.split(" ")[0] } 
     | Tee-Object -Variable Output 
