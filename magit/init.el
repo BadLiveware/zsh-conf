@@ -5,6 +5,8 @@
 ;; Defer garbage collection further back in the startup process
 (setq gc-cons-threshold most-positive-fixnum)
 
+(when (not (display-graphic-p))
+  (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (toggle-scroll-bar -1)
@@ -27,7 +29,10 @@
 
 (straight-use-package 'use-package)
 (use-package gcmh :straight t)
-(use-package magit :straight t)
+(use-package magit 
+  :straight t
+  :config 
+  (advice-add #'magit-version :override #'ignore))
 (use-package evil :straight t :config (evil-mode))
 (use-package evil-magit :straight t :after (evil magit))
 (use-package doom-themes

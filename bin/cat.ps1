@@ -1,7 +1,6 @@
-Get-Command bat.exe -ErrorAction SilentlyContinue || Tee-Object -Variable UseBat && Write-Error "Unable to find bat executable, defaulting to get-content" -ErrorAction SilentlyContinue
+param (
+    [parameter(mandatory=$true, position=0)]
+    $File
+)
 
-if ($UseBat) {
-    bat $args[0]
-} else { 
-    cat $args[0] 
-}
+((get-command bat.exe 2>&1 | out-null) && & bat.exe --color=always $File) || get-content $File

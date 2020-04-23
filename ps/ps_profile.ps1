@@ -35,7 +35,7 @@ function Import-PSReadLine {
 function Import-BaseModules {
   Write-Host "Importing base modules options..." -ForegroundColor Cyan
   Import-Module PSFzf -ArgumentList 'Alt+t', 'Ctrl+r' -Force
-
+  Set-PsFzfOption -TabExpansion
 
   Import-Module -Name Get-ChildItemColor
   # Set l and ls alias to use the new Get-ChildItemColor cmdlets
@@ -56,7 +56,9 @@ function Import-InlineFunctions {
   }
   Set-Alias -Name reload -Value Invoke-Profile -Force  
 
-  Set-Alias fcd cde -Force  
+  Set-Alias jmp cde -Force  
+  Set-Alias jump cde -Force  
+
   Set-Alias lg lazygit -Force  
   Set-Alias which get-command -Force  
 
