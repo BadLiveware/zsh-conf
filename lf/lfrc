@@ -1,5 +1,3 @@
 set relativenumber on
 set incsearch on
 set color256 on
-
-set previewer bat
