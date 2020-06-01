@@ -1,1 +1,4 @@
 configstore/
+base_modules.ps1
+.\base_config.ps1
+base_config.ps1

@@ -56,6 +56,7 @@ function Import-InlineFunctions {
   }
   Set-Alias -Name reload -Value Invoke-Profile -Force  
 
+  Set-Alias j cde -Force
   Set-Alias jmp cde -Force  
   Set-Alias jump cde -Force  
 
