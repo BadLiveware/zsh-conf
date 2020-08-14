@@ -1,29 +1,27 @@
 ﻿function Load-Profile {
-  Write-Host "Starting loading profile..." -ForegroundColor Yellow
+  Echo-Load { Import-PSReadLine } "PSReadLine options"
 
-  # Doesnt work because of runspaces or scopes idk
-  # "Import-PSReadLine",
-  # "Import-BaseModules",
-  # "Import-Prompt",
-  # "Import-InlineFunctions",
-  # "Import-CustomModules"
-  # | Foreach-Object -Parallel global:{ Write-Host "Invoking: $_";. $_ }
-
-  . Import-PSReadLine
-  . Import-BaseModules
-  . Import-Prompt 
-  . Import-InlineFunctions
-  . Import-CustomModules
-  . Setup-Autocomplete
+  Echo-Load { Import-BaseModules } "base modules options"
+  Echo-Load { Import-Prompt  } "prompt"
+  Echo-Load { Import-InlineFunctions } "custom functions"
+  Echo-Load { Import-CustomModules } "custom modules"
+  Echo-Load { Setup-Autocomplete } "auto complete"
 
   ## Azure
   Enable-AzureRmAlias
+}
 
-  Write-Host "Finished loading profile..." -ForegroundColor Yellow
+function Echo-Load {
+  param(
+    $Function,
+    $FriendlyName
+  )
+  Write-Host "Loading $FriendlyName..." -ForegroundColor Cyan -NoNewline
+  $Timer = Measure-Command { . Invoke-Command $Function }
+  Write-Host " [$([int]$Timer.TotalMilliseconds)ms]" -ForegroundColor DarkCyan
 }
 
 function Import-PSReadLine {
-  Write-Host "Loading PSReadLine options..." -ForegroundColor Cyan
   # PSReadLine
   Remove-Module psreadline # Unload builtin version  
   Import-Module PSReadLine -Force
@@ -33,7 +31,6 @@ function Import-PSReadLine {
 }
 
 function Import-BaseModules {
-  Write-Host "Importing base modules options..." -ForegroundColor Cyan
   Import-Module PSFzf -ArgumentList 'Alt+t', 'Ctrl+r' -Force
   Set-PsFzfOption -TabExpansion
 
@@ -44,12 +41,10 @@ function Import-BaseModules {
 }
 
 function Import-Prompt {
-  Write-Host "Starting prompt..." -ForegroundColor Cyan
   Invoke-Expression (&starship init powershell)
 }
 
 function Import-InlineFunctions {
-  Write-Host "Loading custom functions..." -ForegroundColor Cyan
   function Invoke-Profile { 
     Write-Host "Reloading profile..."
     . $PSCommandPath 
@@ -104,7 +99,9 @@ function Import-CustomModule {
   $ModuleDir = "$PSScriptRoot/modules/"
   $File = $FileName + $Extension
   if (Join-Path $ModuleDir $File | Tee-Object -Variable Module | Test-Path) {
-    Import-Module $Module -Force:(-not $NotForce) 
+    $Timer = Measure-Command -Expression { Import-Module $Module -Force:(-not $NotForce) }
+    Write-Host "`n  $File" -ForegroundColor Magenta -NoNewline
+    Write-Host " [$([int]$Timer.TotalMilliseconds)ms]" -ForegroundColor Green -NoNewline
 
     if ($PSBoundParameters.ContainsKey("Alias")) {
       Set-Alias -Name $Alias -Value $AliasValue -Force:$Force -Scope global
@@ -116,8 +113,6 @@ function Import-CustomModule {
 }
 
 function Import-CustomModules {
-  Write-Host "Loading custom modules" -ForegroundColor Cyan
-
   Import-CustomModule Set-AzureFunctionState azfun
   Import-CustomModule Ping-Endpoint telnet
   Import-CustomModule Set-GitBranchFuzzily gcf
@@ -130,6 +125,7 @@ function Import-CustomModules {
   Import-CustomModule Invoke-Key 
   Import-CustomModule Update-AllModules 
   Import-CustomModule Git-Fzf
+  Write-Host ""
 }
 
 function Setup-Autocomplete {
@@ -142,4 +138,12 @@ function Setup-Autocomplete {
   }
 }
 
-. Load-Profile
+$OriginalPref = $ProgressPreference # Default is 'Continue'
+$ProgressPreference = "SilentlyContinue"
+
+Write-Host "Starting loading profile..." -ForegroundColor Yellow
+$Timer = Measure-Command { Load-Profile } 
+Write-Host "Finished loading profile" -NoNewline -ForegroundColor Yellow 
+Write-Host " [$([int]$Timer.TotalMilliseconds)ms]" -ForegroundColor green
+
+$ProgressPreference = $OriginalPref

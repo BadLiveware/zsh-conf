@@ -2,10 +2,12 @@ add_newline = false
 scan_timeout = 10
 
 [character]
-symbol = "➜"
-error_symbol = "✗"
+symbol = "$"
+error_symbol = "X"
 use_symbol_for_status = true
-disabled = false
+
+[package]
+disabled = true
 
 [git]
 symbol = " "
