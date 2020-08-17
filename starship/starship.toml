@@ -5,6 +5,7 @@ scan_timeout = 10
 symbol = "$"
 error_symbol = "X"
 use_symbol_for_status = true
+disabled = false
 
 [package]
 disabled = true

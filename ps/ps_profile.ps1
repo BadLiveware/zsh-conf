@@ -1,11 +1,11 @@
 ﻿function Load-Profile {
-  Echo-Load { Import-PSReadLine } "PSReadLine options"
+  . Echo-Load { . Import-PSReadLine } "PSReadLine options"
 
-  Echo-Load { Import-BaseModules } "base modules options"
-  Echo-Load { Import-Prompt  } "prompt"
-  Echo-Load { Import-InlineFunctions } "custom functions"
-  Echo-Load { Import-CustomModules } "custom modules"
-  Echo-Load { Setup-Autocomplete } "auto complete"
+  . Echo-Load { . Import-BaseModules } "base modules options"
+  . Echo-Load { . Import-Prompt } "prompt"
+  . Echo-Load { . Import-InlineFunctions } "custom functions"
+  . Echo-Load { . Import-CustomModules } "custom modules"
+  . Echo-Load { . Setup-Autocomplete } "auto complete"
 
   ## Azure
   Enable-AzureRmAlias
@@ -16,9 +16,11 @@ function Echo-Load {
     $Function,
     $FriendlyName
   )
+  $Timer = [system.diagnostics.stopwatch]::StartNew()
   Write-Host "Loading $FriendlyName..." -ForegroundColor Cyan -NoNewline
-  $Timer = Measure-Command { . Invoke-Command $Function }
-  Write-Host " [$([int]$Timer.TotalMilliseconds)ms]" -ForegroundColor DarkCyan
+  . $Function
+  Write-Host " [$([int]$Timer.Elapsed.TotalMilliseconds)ms]" -ForegroundColor DarkCyan
+  $Timer.Stop()
 }
 
 function Import-PSReadLine {
@@ -41,7 +43,7 @@ function Import-BaseModules {
 }
 
 function Import-Prompt {
-  Invoke-Expression (&starship init powershell)
+  Invoke-Expression (& starship init powershell)
 }
 
 function Import-InlineFunctions {
@@ -99,9 +101,11 @@ function Import-CustomModule {
   $ModuleDir = "$PSScriptRoot/modules/"
   $File = $FileName + $Extension
   if (Join-Path $ModuleDir $File | Tee-Object -Variable Module | Test-Path) {
-    $Timer = Measure-Command -Expression { Import-Module $Module -Force:(-not $NotForce) }
+    $Timer = [system.diagnostics.stopwatch]::StartNew()
+    Import-Module $Module -Force:(-not $NotForce)
     Write-Host "`n  $File" -ForegroundColor Magenta -NoNewline
-    Write-Host " [$([int]$Timer.TotalMilliseconds)ms]" -ForegroundColor Green -NoNewline
+    Write-Host " [$([int]$Timer.Elapsed.TotalMilliseconds)ms]" -ForegroundColor Green -NoNewline
+    $Timer.Stop()
 
     if ($PSBoundParameters.ContainsKey("Alias")) {
       Set-Alias -Name $Alias -Value $AliasValue -Force:$Force -Scope global
@@ -118,7 +122,6 @@ function Import-CustomModules {
   Import-CustomModule Set-GitBranchFuzzily gcf
   Import-CustomModule Add-NewEmptyFile touch 
   Import-CustomModule Invoke-ActionOnFuzzyTarget fdo 
-  # Import-CustomModule Invoke-AsAdministrator su 
   Import-CustomModule Invoke-SshFuzzily sshf
   Import-CustomModule Invoke-MstscFuzzily rdpf
   Import-CustomModule Run-AzPipelineFuzzily 
@@ -141,9 +144,11 @@ function Setup-Autocomplete {
 $OriginalPref = $ProgressPreference # Default is 'Continue'
 $ProgressPreference = "SilentlyContinue"
 
+$Timer = [system.diagnostics.stopwatch]::StartNew()
 Write-Host "Starting loading profile..." -ForegroundColor Yellow
-$Timer = Measure-Command { Load-Profile } 
+. Load-Profile
 Write-Host "Finished loading profile" -NoNewline -ForegroundColor Yellow 
-Write-Host " [$([int]$Timer.TotalMilliseconds)ms]" -ForegroundColor green
+Write-Host " [$([int  ]$Timer.Elapsed.TotalMilliseconds)ms]" -ForegroundColor green
+$Timer.Stop()
 
 $ProgressPreference = $OriginalPref

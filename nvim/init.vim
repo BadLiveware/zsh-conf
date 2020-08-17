@@ -46,6 +46,7 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+set inccommand=split
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -75,7 +76,7 @@ set relativenumber
 set cursorline
 syntax enable
 set background=dark
-set colorcolumn=80
+set colorcolumn=120
 silent! colorscheme challenger_deep
 if has('nvim') || has('termguicolors')
 	set termguicolors
