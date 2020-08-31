@@ -7,6 +7,9 @@ error_symbol = "X"
 use_symbol_for_status = true
 disabled = false
 
+[line_break]
+disabled = true
+
 [package]
 disabled = true
 
@@ -21,3 +24,12 @@ enabled = true
 ahead = ""
 behind = ""
 diverged = "ﬕ"
+
+[dotnet]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[java]
+disabled = true
