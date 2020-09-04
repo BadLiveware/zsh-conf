@@ -28,7 +28,7 @@ function Import-PSReadLine {
   Remove-Module psreadline # Unload builtin version  
   Import-Module PSReadLine -Force
   Set-PSReadlineKeyHandler -Key Tab -Function Complete
-  Set-PSReadlineOption -ShowToolTips
+  Set-PSReadlineOption -ShowToolTips -MaximumHistoryCount 1000 -HistoryNoDuplicates
   Remove-PSReadlineKeyHandler 'Ctrl+r' # This should get handled by PSFzf
 }
 
