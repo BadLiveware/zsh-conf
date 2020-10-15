@@ -8,7 +8,7 @@
   . Echo-Load { . Setup-Autocomplete } "auto complete"
 
   ## Azure
-  Enable-AzureRmAlias
+  # Enable-AzureRmAlias
 }
 
 function Echo-Load {
@@ -140,7 +140,6 @@ function Setup-Autocomplete {
     }
   }
 }
-
 $OriginalPref = $ProgressPreference # Default is 'Continue'
 $ProgressPreference = "SilentlyContinue"
 

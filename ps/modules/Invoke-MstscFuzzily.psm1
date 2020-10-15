@@ -1,4 +1,8 @@
 function Invoke-MstscFuzzily {
+    param(
+        $User = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name,
+        [Switch] $AllScreens 
+    )
     ((Test-CommandExists -Command fzf) || Write-Error "Unable to find required command: fzf\nInstall using `"choco install fzf`""  -ErrorAction Stop) | Out-Null
     ((Test-CommandExists -Command mstsc) || Write-Error "Unable to find required command: mstsc" -ErrorAction Stop) | Out-Null
 
@@ -10,8 +14,22 @@ function Invoke-MstscFuzzily {
     if ([string]::IsNullOrEmpty($SelectedHost)) {
         Write-Error "No host selected" -ErrorAction Stop
     }
-    Write-Host "Selected host:" $SelectedHost
-    mstsc /v:$SelectedHost     
+    Write-Host "Host: " -NoNewline -ForegroundColor Yellow
+    Write-Host $SelectedHost -ForegroundColor Cyan
+    Write-Host "User: " -NoNewline -ForegroundColor Yellow
+    Write-Host $User -ForegroundColor Cyan
+    $Password = Read-Host -assecurestring "Please enter your password"
+    $Password = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password))
+    Invoke-Expression "cmdkey /generic:$SelectedHost /user:$User /password:$Password" | Out-Null
+    try {
+        Start-Process -FilePath "mstsc.exe" -ArgumentList "/v:$SelectedHost /f $($AllScreens ? '/multimon' : '')"
+        # $Cmd = "Invoke-Expression -Command ""mstsc /v:$SelectedHost /f $($AllScreens ? '/multimon' : '')"""
+        # Start-Process -FilePath "powershell" -ArgumentList "-noprofile -nologo -command $Cmd"
+    }
+    finally {
+        Start-Sleep -Seconds 1 
+        Invoke-Expression "cmdkey /delete:$SelectedHost" | Out-Null
+    }
 }
 
 function Get-Hosts {
