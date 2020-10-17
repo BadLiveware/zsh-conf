@@ -1,1 +1,0 @@
-bat --color=always $args[0]

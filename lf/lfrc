@@ -1,3 +1,4 @@
 set relativenumber on
 set incsearch on
-set color256 on
+set hidden on
+set previewer ~/.config/lf/pv.cmd

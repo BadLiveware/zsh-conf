@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+
 " Aesthetics
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'itchyny/lightline.vim'
@@ -38,7 +39,7 @@ let g:python3_host_prog = 'C:\Python38\python.exe'
 set pyx=3
 let g:node_host_prog = 'C:\Users\flars\AppData\Roaming\npm\neovim-node-host.cmd' "C:\Program Files\nodejs\node.exe'
 
-"Completion
+" Completion
 set hidden
 set nobackup
 set nowritebackup
@@ -103,4 +104,4 @@ silent! autocmd FileType lisp,clojure,scheme,powershell,vim RainbowParentheses
 
 
 " Mappings
-let mapleader = "\<Space>"
+let mapleader = " "
