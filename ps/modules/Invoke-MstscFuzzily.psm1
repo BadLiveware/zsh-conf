@@ -43,7 +43,7 @@ function Get-Hosts {
 
 function Select-Host {
     param ( [string[]] $Hosts )
-    $Hosts | fzf --height 10 --header "Select the target for mstsc(rdp)" --prompt "> mstc /v:"
+    $Hosts | fzf --height 15 --header "Select the target for mstsc(rdp)" --prompt "> mstc /v:"
 }
 
 function Test-CommandExists {
