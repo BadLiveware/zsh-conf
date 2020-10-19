@@ -1,4 +1,4 @@
-@REM @echo off
+@echo off
 setlocal
 
 set _extension=%~x1
