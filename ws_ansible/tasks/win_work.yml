@@ -1,0 +1,10 @@
+# Install/uninstall with chocolatey
+- name: Install base choco packages
+  chocolatey.chocolatey.win_chocolatey:
+    name: 
+    - vmware-horizon-client
+    - zoom
+    - slack
+    - microsoft-teams
+    state: latest
+  

@@ -1,0 +1,15 @@
+- name: Install base pre-release choco packages 
+  chocolatey.chocolatey.win_chocolatey:
+    name:
+    - geforce-experience
+    - geforce-experience-disable-updates-winconfig
+    - nvidia-display-driver
+    - msiafterburner
+    - discord
+    - spotify
+    - obs-studio
+    - asio4all
+    - goggalaxy
+    state: latest
+    allow_prerelease: yes
+  

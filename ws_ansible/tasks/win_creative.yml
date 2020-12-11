@@ -1,0 +1,10 @@
+# Install/uninstall with chocolatey
+- name: Install base choco packages
+  chocolatey.chocolatey.win_chocolatey:
+    name: 
+    - krita
+    - gimp
+    - inkscape
+    - reaper
+    state: latest
+  
