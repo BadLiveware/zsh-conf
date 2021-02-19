@@ -25,20 +25,37 @@ function Echo-Load {
   $Timer.Stop()
 }
 
+function Ensure-Module {
+  param ( 
+    [string] $ModuleName,
+    [switch] $AllowPrerelease,
+    [string[]] $ImportArgumentList
+  )
+  try {
+    Get-InstalledModule -Name $ModuleName -AllowPrerelease:$AllowPrerelease
+  }
+  catch {
+    Install-Module -Name $ModuleName -AllowPrerelease:$AllowPrerelease
+  }
+  finally {
+    Import-Module $ModuleName -ArgumentList $ImportArgumentList -Force
+  }
+}
+
 function Import-PSReadLine {
   # PSReadLine
   Remove-Module psreadline # Unload builtin version  
-  Import-Module PSReadLine -Force
+  Ensure-Module "PSReadLine" -AllowPrerelease
   Set-PSReadlineKeyHandler -Key Tab -Function Complete
   Set-PSReadlineOption -ShowToolTips -MaximumHistoryCount 1000 -HistoryNoDuplicates
   Remove-PSReadlineKeyHandler 'Ctrl+r' # This should get handled by PSFzf
 }
 
 function Import-BaseModules {
-  Import-Module PSFzf -ArgumentList 'Alt+t', 'Ctrl+r' -Force
+  Ensure-Module "PSFzf" -ImportArgumentList 'Alt+t', 'Ctrl+r'
   Set-PsFzfOption -TabExpansion
 
-  Import-Module -Name Get-ChildItemColor
+  Ensure-Module "Get-ChildItemColor"
   # Set l and ls alias to use the new Get-ChildItemColor cmdlets
   Set-Alias l Get-ChildItemColor -Option AllScope
   Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
