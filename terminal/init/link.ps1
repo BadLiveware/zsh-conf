@@ -1,0 +1,1 @@
+New-Item -ItemType HardLink -Name "$Env:LOCALAPPDATA/Microsoft/Windows Terminal/settings.json" -Value "$PSScriptRoot/../settings.json"
