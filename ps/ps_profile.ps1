@@ -36,6 +36,7 @@ function Ensure-Module {
     Get-InstalledModule -Name $ModuleName -AllowPrerelease:$AllowPrerelease
   }
   catch {
+    Write-Host "Unable to find $ModuleName, installing..."
     Install-Module -Name $ModuleName -AllowPrerelease:$AllowPrerelease
   }
   finally {
