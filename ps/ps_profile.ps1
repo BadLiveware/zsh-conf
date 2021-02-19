@@ -1,5 +1,6 @@
 ﻿function Load-Profile {
   $Env:PSModulePath = (($Env:PSModulePath -split ";") | ? { $_ -notlike "\\Storage01-a\*" }) -join ";" 
+  Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 
   . Echo-Load { . Import-PSReadLine } "PSReadLine options"
 
