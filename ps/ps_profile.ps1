@@ -1,4 +1,6 @@
 ﻿function Load-Profile {
+  $Env:PSModulePath = (($Env:PSModulePath -split ";") | ? { $_ -notlike "\\Storage01-a\*" }) -join ";" 
+
   . Echo-Load { . Import-PSReadLine } "PSReadLine options"
 
   . Echo-Load { . Import-BaseModules } "base modules options"
