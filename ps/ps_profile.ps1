@@ -32,16 +32,11 @@ function Ensure-Module {
     [switch] $AllowPrerelease,
     [string[]] $ImportArgumentList
   )
-  try {
-    Get-InstalledModule -Name $ModuleName -AllowPrerelease:$AllowPrerelease
-  }
-  catch {
+  if (-not (Get-InstalledModule -Name $ModuleName -AllowPrerelease:$AllowPrerelease -ErrorAction SilentlyContinue ?? $false)) {
     Write-Host "Unable to find $ModuleName, installing..."
     Install-Module -Name $ModuleName -AllowPrerelease:$AllowPrerelease
   }
-  finally {
-    Import-Module $ModuleName -ArgumentList $ImportArgumentList -Force
-  }
+  Import-Module $ModuleName -ArgumentList $ImportArgumentList -Force
 }
 
 function Import-PSReadLine {
