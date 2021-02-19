@@ -30,11 +30,12 @@ function Ensure-Module {
   param ( 
     [string] $ModuleName,
     [switch] $AllowPrerelease,
-    [string[]] $ImportArgumentList
+    [string[]] $ImportArgumentList,
+    [switch] $AllowClobber
   )
   if (-not ((Get-InstalledModule -Name $ModuleName -AllowPrerelease:$AllowPrerelease -ErrorAction SilentlyContinue) ?? $false)) {
-    Write-Host "Unable to find $ModuleName, installing..."
-    Install-Module -Name $ModuleName -AllowPrerelease:$AllowPrerelease
+    Write-Host "`n  Unable to find $ModuleName, installing..."
+    Install-Module -Name $ModuleName -AllowPrerelease:$AllowPrerelease -AllowClobber:$AllowClobber
   }
   Import-Module $ModuleName -ArgumentList $ImportArgumentList -Force
 }
@@ -52,7 +53,7 @@ function Import-BaseModules {
   Ensure-Module "PSFzf" -ImportArgumentList 'Alt+t', 'Ctrl+r'
   Set-PsFzfOption -TabExpansion
 
-  Ensure-Module "Get-ChildItemColor"
+  Ensure-Module "Get-ChildItemColor" -AllowClobber
   # Set l and ls alias to use the new Get-ChildItemColor cmdlets
   Set-Alias l Get-ChildItemColor -Option AllScope
   Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
