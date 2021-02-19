@@ -5,4 +5,4 @@ Linking
   $Source -> $Target
 "@
 
-New-Item -ItemType HardLink -Name $Target -Value $Source
+New-Item -ItemType HardLink -Name "$Target" -Value "$Source"
