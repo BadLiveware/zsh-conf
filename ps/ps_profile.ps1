@@ -32,7 +32,7 @@ function Ensure-Module {
     [switch] $AllowPrerelease,
     [string[]] $ImportArgumentList
   )
-  if (-not (Get-InstalledModule -Name $ModuleName -AllowPrerelease:$AllowPrerelease -ErrorAction SilentlyContinue ?? $false)) {
+  if (-not ((Get-InstalledModule -Name $ModuleName -AllowPrerelease:$AllowPrerelease -ErrorAction SilentlyContinue) ?? $false)) {
     Write-Host "Unable to find $ModuleName, installing..."
     Install-Module -Name $ModuleName -AllowPrerelease:$AllowPrerelease
   }
