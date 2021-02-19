@@ -22,7 +22,7 @@
                 "commandline": "pwsh.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -NoExit -Command \". C:/Users/frla01/.config/ps/ps_profile.ps1\"",
                 "hidden": false,
                 "icon": "C:/Users/frla01/.config/terminal/resources/pwsh.scale-100.png",
-                "colorScheme": "Monokai Seti Dark",
+                "colorScheme": "Nord",
                 "startingDirectory": "$HOME"
             },
             {
@@ -75,6 +75,27 @@
             "brightWhite": "#f6f6ef",
             "yellow": "#FA8419",
             "brightYellow": "#FA8419"
+        },
+        {
+            "name": "Nord",
+            "foreground": "#D8DEE9",
+            "background": "#2E3440",
+            "black": "#3B4252",
+            "red": "#BF616A",
+            "green": "#A3BE8C",
+            "yellow": "#EBCB8B",
+            "blue": "#81A1C1",
+            "purple": "#B48EAD",
+            "cyan": "#88C0D0",
+            "white": "#E5E9F0",
+            "brightBlack": "#4C566A",
+            "brightRed": "#BF616A",
+            "brightGreen": "#A3BE8C",
+            "brightYellow": "#EBCB8B",
+            "brightBlue": "#81A1C1",
+            "brightPurple": "#B48EAD",
+            "brightCyan": "#88C0D0",
+            "brightWhite": "#E5E9F0"
         }
     ],
     // Add any keybinding overrides to this array.
