@@ -39,7 +39,7 @@ function Install-WithChoco {
 
   if (Test-Path -Path $env:ChocolateyInstall) {
     Write-Host "Installing $($Package -join ' ')"
-    Invoke-Native { choco.exe install $Package --params "$params" --yes --limit-output $ExtraArgs } -Quiet
+    Invoke-Native { choco.exe install $Package --params "$params" --yes --limit-output $ExtraArgs }
   }
   else {
     throw "Can't find a chocolatey install directory..."
