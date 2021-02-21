@@ -22,24 +22,23 @@ function Invoke-Bash {
     [parameter(ValueFromPipeline, Position = 0)]
     [string]$Command
   )
-  BEGIN {}
-  PROCESS {
+  Process {
     Invoke-Native { bash.exe -c $Command }
   }
-  END {}
 }
 
 function Install-WithChoco {
   param (
     [parameter(ValueFromPipeline, Position = 0)]
-    [string[]] $Package,
+    [string[]] $Packages,
     [string] $Params = "",
     [string] $ExtraArgs = ""
   )
 
   if (Test-Path -Path $env:ChocolateyInstall) {
-    Write-Host "Installing $($Package -join ' ')"
-    Invoke-Native { choco.exe install $Package --params "$params" --yes --limit-output $ExtraArgs }
+    $PackagesStr = $Packages -join " "
+    Write-Host "Installing $PackagesStr"
+    Invoke-Native { choco.exe install $PackagesStr --params "$params" --yes --limit-output $ExtraArgs }
   }
   else {
     throw "Can't find a chocolatey install directory..."
@@ -58,7 +57,7 @@ function Test-ChocolateyPackageInstalled {
       $packageInstalled = Test-Path -Path $env:ChocolateyInstall\lib\$Package
     }
     else {
-      Write-Warning "Can't find a chocolatey install directory..."
+      throw "Can't find a chocolatey install directory..."
     }
 
     return $packageInstalled
