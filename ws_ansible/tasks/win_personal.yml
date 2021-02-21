@@ -2,7 +2,6 @@
   chocolatey.chocolatey.win_chocolatey:
     name:
     - geforce-experience
-    - geforce-experience-disable-updates-winconfig
     - nvidia-display-driver
     - msiafterburner
     - discord

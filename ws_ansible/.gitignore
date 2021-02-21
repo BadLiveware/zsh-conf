@@ -1,1 +1,25 @@
 *.sw?
+
+
+# Created by https://www.toptal.com/developers/gitignore/api/powershell,ansible,vscode
+# Edit at https://www.toptal.com/developers/gitignore?templates=powershell,ansible,vscode
+
+### Ansible ###
+*.retry
+
+### PowerShell ###
+# Exclude packaged modules
+*.zip
+
+# Exclude .NET assemblies from source
+*.dll
+
+### vscode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# End of https://www.toptal.com/developers/gitignore/api/powershell,ansible,vscode
