@@ -132,7 +132,8 @@ function Install-WSL {
       Write-Progress -Activity 'Bootstrapping system' -Status "Rebooting after WSL install" -SecondsRemaining $TimeRemaining.TotalSeconds
       Start-Sleep 1
     }
-    Restart-Computer
+    # Restart-Computer
+    exit 0
   }
 
   Install-WithChoco wsl-ubuntu-2004
