@@ -4,6 +4,7 @@
 function Main {
   $UserName = "flars"
 
+  Install-Choco
   Install-WSL
   Install-SSH -UserName $UserName
   Install-Ansible
