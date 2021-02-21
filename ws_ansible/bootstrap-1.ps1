@@ -17,7 +17,7 @@ function Install-Ansible {
   "which ansible" | Invoke-Bash
 }
 
-Invoke-Bash {
+function Invoke-Bash {
   param (
     [parameter(ValueFromPipeline, Position = 0)]
     [string]$Command
