@@ -7,4 +7,4 @@ if [ ! -z "$DEBUG" ]; then
 fi
 
 set -x
-ansible-playbook ./all.yml --check --diff "$I_EXTRA_ARGS" "$ANSIBLE_EXTRA_ARGS"
+ansible-playbook ./all.yml --check --diff 

@@ -1,4 +1,6 @@
-- hosts: windows
+---
+- name: windows setup
+  hosts: windows
   tasks:
     - include: tasks/win_base.yml
     - include: tasks/win_personal.yml

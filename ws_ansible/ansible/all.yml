@@ -1,6 +1,2 @@
----
-- hosts: all
-  tasks:
-    - include: win_personal.yml 
-    - include: wsl.yml
-
+- import_playbook: win_personal.yml 
+- import_playbook: wsl.yml

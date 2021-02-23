@@ -34,17 +34,25 @@ Write-Host "Created temporary ssh config: $SshConfigTmp"
 Get-Content $SshConfigTmp | ForEach-Object { Write-Verbose "`t$_" }
 
 try {
-    Write-Host "Starting container...`n"
-    $DockerId = docker run `
-        --rm `
-        --net host `
-        --mount type=bind,source="$SshConfigTmp",target="/root/.ssh/config" `
-        --mount type=bind,source="$(Resolve-Path $Env:HOMEPATH)/.ssh/id_ecdsa",target="/root/.ssh/id_ecdsa" `
-        if ($IsDebug) { -e "DEBUG=true" } else { "" } `
-        $(docker build -q -f .\Dockerfile .)
+    Write-Host "Building image"
+    $ImageSha = (docker build -q -f .\Dockerfile .) -replace "sha256:"
+
+    Write-Host "Starting container..."
+    $Arguments = 
+        "run",
+        "--rm",
+        "--net host",
+        "--mount type=bind,source=$SshConfigTmp,target=/root/.ssh/config",
+        "--mount type=bind,source=$(Resolve-Path $Env:HOMEPATH)/.ssh/id_ecdsa,target=/root/.ssh/id_ecdsa",
+        "$(if($IsDebug) { `"-e 'DEBUG=true'`" })",
+        "$ImageSha"
+    $DockerExe = get-command docker | Select-Object -ExpandProperty Source
+    $Command = "$DockerExe run $Arguments"
+    Write-Host "`nRunning command: $Command" -ForegroundColor Cyan
+
+    Start-Process -FilePath $DockerExe -ArgumentList $Arguments -Wait -NoNewWindow -Verbose:$IsDebug
 }
 finally {
     Write-Host "Cleaning up generated ssh config"
     Remove-Item -Recurse -Force $SshConfigTmp
 }
-$DockerId
