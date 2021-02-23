@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+    - include: win_personal.yml 
+    - include: wsl.yml
+

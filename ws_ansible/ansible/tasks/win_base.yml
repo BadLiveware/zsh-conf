@@ -1,6 +1,6 @@
-- debug:
-    var: ansible_connection
-- debug: var=hostvars[inventory_hostname]['ansible_python_interpreter']
+# - debug:
+#     var: ansible_connection
+# - debug: var=hostvars[inventory_hostname]['ansible_python_interpreter']
 
 - name: Set power plan to high performance
   community.windows.win_power_plan:
@@ -35,7 +35,8 @@
   
 - name: Install scoop & git
   community.windows.win_scoop:
-  - git 
+    name:
+    - git 
 
 - name: Install scoop buckets
   community.windows.win_scoop_bucket: 
@@ -80,16 +81,16 @@
 - name: Set ahk scripts on boot
   community.windows.win_scheduled_task:
     name: TriggerTask
-    description: start { item.name } on logon
+    description: start {{ item.name }} on logon
     actions:
-    - path: { item.path }
+    - path: "{{ item.path }}"
     triggers:
     - type: logon
     state: present
   loop:
-  # - { name: 'AlwaysOnTop', path: '../../misc/AlwaysOnTop.ahk' }
-  - { name: 'Guid-Clipboard', path: '../../misc/Guid-Clipboard.ahk' }
+    - { name: 'Guid-Clipboard', path: '../../../misc/Guid-Clipboard.ahk' }
+    # - { name: 'AlwaysOnTop', path: '../../misc/AlwaysOnTop.ahk' }
 
 - name: Bind esc to caps lock
   community.windows.win_regmerge:
-    path: ../../misc/rebind_keys.reg
+    path: ../../../misc/rebind_keys.reg

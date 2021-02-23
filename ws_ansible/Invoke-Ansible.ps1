@@ -1,3 +1,10 @@
+[cmdletbinding()]
+param (
+    $BecomePassword = ""
+    
+)
+$IsDebug = $PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent
+
 $WslIp = wsl hostname -I
 Write-Host "Found WSL ip: $WslIp"
 
@@ -33,6 +40,7 @@ try {
         --net host `
         --mount type=bind,source="$SshConfigTmp",target="/root/.ssh/config" `
         --mount type=bind,source="$(Resolve-Path $Env:HOMEPATH)/.ssh/id_ecdsa",target="/root/.ssh/id_ecdsa" `
+        if ($IsDebug) { -e "DEBUG=true" } else { "" } `
         $(docker build -q -f .\Dockerfile .)
 }
 finally {

@@ -52,5 +52,3 @@ ENV ANSIBLE_SSH_PIPELINING True
 # Sets entry point (same as running ansible-playbook)
 COPY ./entry.sh .
 ENTRYPOINT ["./entry.sh"]
-# Can also use ["ansible"] if wanting it to be an ad-hoc command version
-#ENTRYPOINT ["ansible"]

@@ -1,11 +1,4 @@
-- hosts: localhost
-  connection: winrm
-  vars:
-    ansible_connection: winrm
-    ansible_port: 5985
-    ansible_wirm_transport: basic
-    ansible_winrm_server_cert_validation: ignore
-
+- hosts: windows
   tasks:
     - include: tasks/win_base.yml
     - include: tasks/win_personal.yml

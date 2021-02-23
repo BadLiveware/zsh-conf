@@ -1,5 +1,5 @@
-- hosts: localhost
-  connection: local
+---
+- hosts: linux
   vars:
     base16: False
   pre_tasks:
@@ -13,5 +13,4 @@
         changed_when: False
       become: yes
   tasks:
-     - include: tasks/main.yml
-     - include: tasks/dotfiles.yml
+    #  - include: tasks/dotfiles.yml
