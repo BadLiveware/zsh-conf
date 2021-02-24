@@ -186,10 +186,10 @@ function Install-WSL {
 # Wrapper for native command execution
 #   Powershell/CMD is insane when it comes to native execution 
 function script:Invoke-Native {
+  [cmdletbinding()]
   param (
     [parameter(ValueFromPipeline)]
     [ScriptBlock] $ScriptBlock,
-    [switch]$Debug = $false,
     [switch]$Quiet = $false
   )
   BEGIN {
@@ -203,7 +203,7 @@ function script:Invoke-Native {
           return;
         }
 
-        if ($Debug -and ($_ -is [System.Management.Automation.ErrorRecord])) {
+        if (($DebugPreference -eq 'Continue') -and ($_ -is [System.Management.Automation.ErrorRecord])) {
           "stdErr: $_"
         }
         else {
