@@ -129,13 +129,16 @@ function Add-KeyIfNotExists {
     [parameter(ValueFromPipeline)]$File,
     $Key
   )
-  $FileContent = if (Test-Path $File) { Get-Content $File } else { "" }
-  if (-not ($Key -in $FileContent)) {
-    Write-Host "Adding key to $File"
-    $Key >> $File
-  }
-  else {
-    Write-Host "Found key in $File, skipping"
+  PROCESS { 
+    
+    $FileContent = if (Test-Path $File) { Get-Content $File } else { "" }
+    if (-not ($Key -in $FileContent)) {
+      Write-Host "Adding key to $File"
+      $Key >> $File
+    }
+    else {
+      Write-Host "Found key in $File, skipping"
+    }
   }
 }
 
