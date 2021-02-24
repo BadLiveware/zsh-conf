@@ -92,7 +92,7 @@ function Install-SSH {
   Write-Host "Installing openssh"
   Install-WithChoco openssh -Params '"/SSHServerFeature"'
 
-  $SshKeyLoc = "$env:HOMEPATH/.ssh/id_ecdsa"
+  $SshKeyLoc = "$env:USERPROFILE/.ssh/id_ecdsa"
   if (-not (Test-Path $SshKeyLoc)) {
     Write-Host "Generating ssh key: $SshKeyLoc"
     & ssh-keygen -q -f $SshKeyLoc -t ecdsa -b 521 -P """"
@@ -103,7 +103,7 @@ function Install-SSH {
   $SshKey = Get-Content "$SshKeyLoc.pub"
 
   $AdminKeyFile = "$Env:ProgramData/ssh/administrators_authorized_keys"
-  $UserKeyFile = "$Env:HOMEPATH/.ssh/authorized_keys"
+  $UserKeyFile = "$Env:USERPROFILE/.ssh/authorized_keys"
   $AdminKeyFile, $UserKeyFile | Add-KeyIfNotExists -Key $SshKey 
 
   Write-Host "Setting admin authorized keys ACL"
