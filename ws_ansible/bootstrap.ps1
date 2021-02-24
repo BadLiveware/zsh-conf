@@ -189,7 +189,7 @@ function script:Invoke-Native {
   param (
     [parameter(ValueFromPipeline)]
     [ScriptBlock] $ScriptBlock,
-    [switch]$Debug,
+    [switch]$Debug = $false,
     [switch]$Quiet = $false
   )
   BEGIN {
