@@ -34,6 +34,7 @@
   community.windows.win_scoop:
     name:
     - git 
+    global: yes
 
 - name: Install scoop buckets
   community.windows.win_scoop_bucket: 
@@ -48,8 +49,9 @@
 - name: Install global scoop packages
   community.windows.win_scoop:
     name:
+    - aria2
     - pwsh
-    - 7zip
+    - 7zip-zstd
     - gsudo
     - less
     global: yes
@@ -57,7 +59,7 @@
 - name: Install scoop packages
   community.windows.win_scoop:
     name:
-    - aria2
+    - sharex
     - neovim-nightly
     - keepass
     - keepass-plugin-keepassrpc
