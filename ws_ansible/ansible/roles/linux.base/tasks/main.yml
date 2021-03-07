@@ -1,0 +1,25 @@
+---
+- name: Copy pacman configuration file
+  copy:
+    src: pacman.conf
+    dest: /etc/pacman.conf
+
+- name: Refresh pacman mirrors
+  pacman:
+    update_cache: yes
+
+- name: Install inetutils for hostname
+  pacman:
+      name: inetutils
+      state: present
+
+- name: Set the hostname
+  hostname:
+    name: "{{ linux.hostname }}"
+  when: hostname is defined
+
+- include: genie.yml
+- include: shell.yml
+- include: user.yml
+- include: sudo.yml
+- include: packages.yml

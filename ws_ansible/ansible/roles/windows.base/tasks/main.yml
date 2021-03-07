@@ -59,6 +59,7 @@
 - name: Install scoop packages
   community.windows.win_scoop:
     name:
+    - alacritty
     - sharex
     - neovim-nightly
     - keepass

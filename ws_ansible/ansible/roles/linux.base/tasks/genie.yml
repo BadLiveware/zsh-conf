@@ -1,0 +1,15 @@
+---
+- name: Copy pacman configuration file
+  copy:
+    src: genie.ini
+    dest: /etc/genie.ini
+
+- name: Get latest genie release
+  get_url:
+    url: https://github.com/arkane-systems/genie/releases/download/v1.35/genie-systemd-1.35-1-x86_64.pkg.tar.zst
+    dest: &file ~/tmp/genie.pkg.tar.zst
+
+- name: Install genie
+  pacman:
+      name: *file
+      state: present

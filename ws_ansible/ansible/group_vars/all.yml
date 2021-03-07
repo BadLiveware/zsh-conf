@@ -1,0 +1,61 @@
+linux:
+  user:
+    name: badliveware
+    uid: 1000
+    group: dev 
+    email: flarsson93@gmail.com
+    log:
+      dir: log
+      rotate: 8
+
+  hostname: wsl
+
+  ssh:
+    port: 2222
+    user_key: /root/id_ecdsa
+    enable_sshd: false
+
+  aur:
+    dir: aur
+    packages:
+        - yay
+
+  editors:
+    aur:
+      - neovim-nightly-bin
+
+  dotfiles:
+    url: git@github.com:BadLiveware/system-setup.git
+    destination: projects/dotfiles
+    rcup_flags: -fx README.md
+
+  base_packages:
+    - base-devel
+    - man-db
+    - man-pages
+    - pacman-contrib
+    - git
+    - rsync
+    - coreutils
+    - moreutils
+    - dateutils
+    - arch-wiki-lite
+    - arch-wiki-docs
+    - python-keyring
+    - python-secretstorage
+    - pv
+    - jq
+    - termdown
+    - osquery
+    - fzf
+
+win:
+  hostname: timmermans
+
+  ssh:
+    port: 22
+    user_key: c:/ssh/id_ecdsa
+    enable_sshd: false
+
+  video_drivers:
+    - nvidia-display-driver

@@ -1,0 +1,10 @@
+---
+- name: Install editors
+  aur:
+    name: "{{ linux.editors.aur }}"
+    state: present
+
+- name: Install editors
+  pacman:
+    name: "{{ linux.editors.pacman }}"
+    state: present

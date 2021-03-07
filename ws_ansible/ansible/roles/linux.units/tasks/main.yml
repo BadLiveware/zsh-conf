@@ -1,0 +1,5 @@
+---
+- name: Install units
+  pacman:
+    name: units
+    state: present

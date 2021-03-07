@@ -1,0 +1,14 @@
+---
+- name: Install base choco packages
+  community.windows.win_scoop:
+    name: 
+    - vmware-horizon-client-np
+    - zoom
+    - slack
+
+- name: Install work choco packages
+  chocolatey.chocolatey.win_chocolatey:
+    name:
+    - microsoft-teams
+    state: latest
+  

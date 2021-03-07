@@ -1,2 +1,0 @@
-- import_playbook: win_personal.yml 
-- import_playbook: wsl.yml

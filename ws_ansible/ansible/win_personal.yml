@@ -1,8 +1,0 @@
----
-- name: windows setup
-  hosts: windows
-  tasks:
-    - include: tasks/win_base.yml
-    - include: tasks/win_personal.yml
-    - include: tasks/win_work.yml
-    - include: tasks/win_creative.yml
