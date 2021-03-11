@@ -9,5 +9,7 @@
     name:
       - ripgrep-all
     user: "{{ linux.user.name }}"
+  become: yes
+  become_user: aur_builder
   tags:
     - aur

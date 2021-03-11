@@ -5,6 +5,7 @@ function Main {
   $UserName = "flars"
 
   Install-Choco
+  Install-Scoop
   Install-WSL
   Install-SSH -UserName $UserName
   Install-DockerDesktop
@@ -36,6 +37,18 @@ function Invoke-Bash {
   )
   Process {
     Invoke-Native { bash.exe -c $Command }
+  }
+}
+
+function Install-WithScoop {
+  param (
+    [parameter(ValueFromPipeline, Position = 0)]
+    [string] $Package
+  )
+
+  Process {
+    Write-Host "Installing $Package"
+    scoop install $Package
   }
 }
 
@@ -77,6 +90,14 @@ function Test-ChocolateyPackageInstalled {
   }
 }
 
+function Install-Scoop {
+  Set-ExecutionPolicy Bypass -Scope Process -Force; 
+  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
+
+  Write-Host "Downloading and installing scoop"
+  Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+}
+
 function Install-Choco {
   Set-ExecutionPolicy Bypass -Scope Process -Force; 
   [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
@@ -92,10 +113,10 @@ function Install-SSH {
   Write-Host "Installing openssh"
   Install-WithChoco openssh -Params '"/SSHServerFeature"'
 
-  $SshKeyLoc = "$env:USERPROFILE/.ssh/id_ecdsa"
+  $SshKeyLoc = "$env:USERPROFILE/.ssh/id_ed25519"
   if (-not (Test-Path $SshKeyLoc)) {
     Write-Host "Generating ssh key: $SshKeyLoc"
-    & ssh-keygen -q -f $SshKeyLoc -t ecdsa -b 521 -P """"
+    & ssh-keygen -q -f $SshKeyLoc -t ed25519 -P """"
   }
   else {
     Write-Host "$SshKeyLoc key exists, skipping generation"
@@ -116,12 +137,12 @@ function Install-SSH {
   $Acl | Set-Acl
 
   "mkdir -p ~/.ssh/ 
-  && cat /mnt/c/Users/flars/.ssh/id_ecdsa.pub >> ~/.ssh/authorized_keys 
+  && cat /mnt/c/Users/flars/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys 
   && chmod 700 ~/.ssh 
   && chmod 600 ~/.ssh/authorized_keys" | Invoke-Bash 
 
-  "cp /mnt/c/Users/$UserName/.ssh/id_ecdsa ~/.ssh/" 
-  "chmod 0600 ~/.ssh/id_ecdsa" | Invoke-Bash 
+  "cp /mnt/c/Users/$UserName/.ssh/id_ed25519 ~/.ssh/" 
+  "chmod 0600 ~/.ssh/id_ed25519" | Invoke-Bash 
 }
 
 function Add-KeyIfNotExists {
@@ -158,7 +179,6 @@ function Install-WSL {
     exit 0
   }
 
-  Install-WithChoco wsl-ubuntu-2004
 
   # $WSL = "Microsoft-Windows-Subsystem-Linux" 
   # $VMP = "VirtualMachinePlatform"
@@ -168,22 +188,23 @@ function Install-WSL {
   #   Write-Host "At least one feature enabled. Restart requires.`nRun this script again after reboot"
   #   exit 0
   # }
+  Install-WithScoop archwsl
 
-  # $WSLUpdate = "$Env:TEMP\wsl_update.msi"
-  # if (-not (Test-Path $WSLUpdate)) {
-  #   Write-Host "Downloading WSL kernel update"
-  #   $Uri = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
-  #   (New-Object -TypeName System.Net.WebClient).DownloadFile($Uri, $WSLUpdate)
-  # }
-  # else {
-  #   Write-Verbose "Kernel update already exists, using existing: $WSLUpdate"
-  # }
+  $WSLUpdate = "$Env:TEMP\wsl_update.msi"
+  if (-not (Test-Path $WSLUpdate)) {
+    Write-Host "Downloading WSL kernel update"
+    $Uri = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
+    (New-Object -TypeName System.Net.WebClient).DownloadFile($Uri, $WSLUpdate)
+  }
+  else {
+    Write-Verbose "Kernel update already exists, using existing: $WSLUpdate"
+  }
 
-  # Write-Host "Installing WSL kernel update"
-  # Start-Process msiexec.exe -Wait -ArgumentList "/i $WSLUpdate /quiet" -NoNewWindow
+  Write-Host "Installing WSL kernel update"
+  Start-Process msiexec.exe -Wait -ArgumentList "/i $WSLUpdate /quiet" -NoNewWindow
 
-  # Write-Host "Setting default version to WSL2"
-  # wsl --set-default-version 2
+  Write-Host "Setting default version to WSL2"
+  wsl --set-default-version 2
 }
 
 # Wrapper for native command execution

@@ -1,0 +1,13 @@
+---
+- name: install k3d
+  aur: 
+    name: rancher-k3d-bin
+    user: "{{ linux.user.name }}"
+  become: yes
+  become_user: aur_builder
+  
+
+- name: install kubectl
+  pacman:
+    name: kubectl
+    state: present
