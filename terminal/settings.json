@@ -20,7 +20,11 @@
                 "guid": "{64b29b62-8f70-44bb-b0f8-3179b8512779}",
                 "name": "PowerShell",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "commandline": "pwsh.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -NoExit -Command \". C:/Users/frla01/.config/ps/ps_profile.ps1\"",
+=======
+                "commandline": "pwsh.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -NoExit -Command \". C:/Users/flars/.config/ps/ps_profile.ps1\"",
+>>>>>>> aa11044 (Update)
 =======
                 "commandline": "pwsh.exe -ExecutionPolicy Bypass -NoLogo -NoProfile -NoExit -Command \". C:/Users/flars/.config/ps/ps_profile.ps1\"",
 >>>>>>> aa11044 (Update)
@@ -55,13 +59,19 @@
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> aa11044 (Update)
             },
             {
                 "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
                 "hidden": false,
                 "name": "Arch",
                 "source": "Windows.Terminal.Wsl"
+<<<<<<< HEAD
+>>>>>>> aa11044 (Update)
+=======
 >>>>>>> aa11044 (Update)
             }
         ]

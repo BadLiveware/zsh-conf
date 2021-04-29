@@ -3,7 +3,11 @@
   become: yes
   roles:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - { role: base, tags: ['base'] }
+=======
+    - { role: linux.base, tags: ['base'] }
+>>>>>>> aa11044 (Update)
 =======
     - { role: linux.base, tags: ['base'] }
 >>>>>>> aa11044 (Update)

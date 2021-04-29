@@ -6,7 +6,11 @@ param (
 $IsDebug = $PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 $WslIp = wsl hostname -I
+=======
+$WslIp = wsl hostname -i
+>>>>>>> aa11044 (Update)
 =======
 $WslIp = wsl hostname -i
 >>>>>>> aa11044 (Update)
@@ -52,7 +56,11 @@ try {
         "$ImageSha"
     $DockerExe = get-command docker | Select-Object -ExpandProperty Source
 <<<<<<< HEAD
+<<<<<<< HEAD
     $Command = "$DockerExe run $Arguments"
+=======
+    $Command = "$DockerExe $Arguments"
+>>>>>>> aa11044 (Update)
 =======
     $Command = "$DockerExe $Arguments"
 >>>>>>> aa11044 (Update)
