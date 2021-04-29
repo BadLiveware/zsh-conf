@@ -4,9 +4,15 @@
 function Main {
   $UserName = "flars"
 
+<<<<<<< HEAD
   Install-Choco
   Install-Scoop
   Install-WSL
+=======
+  #Install-Choco
+  #Install-Scoop
+  #Install-WSL
+>>>>>>> aa11044 (Update)
   Install-SSH -UserName $UserName
   Install-DockerDesktop
   Install-Ansible
@@ -136,6 +142,7 @@ function Install-SSH {
   $Acl.SetAccessRule($SystemRule)
   $Acl | Set-Acl
 
+<<<<<<< HEAD
   "mkdir -p ~/.ssh/ 
   && cat /mnt/c/Users/flars/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys 
   && chmod 700 ~/.ssh 
@@ -143,6 +150,9 @@ function Install-SSH {
 
   "cp /mnt/c/Users/$UserName/.ssh/id_ed25519 ~/.ssh/" 
   "chmod 0600 ~/.ssh/id_ed25519" | Invoke-Bash 
+=======
+  "mkdir -p ~/.ssh/ && cat /mnt/c/Users/flars/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys && chmod 700 ~/.ssh && cp /mnt/c/Users/$UserName/.ssh/id_ed25519 ~/.ssh/ && chmod 0600 ~/.ssh/id_ed25519" | Invoke-Bash 
+>>>>>>> aa11044 (Update)
 }
 
 function Add-KeyIfNotExists {

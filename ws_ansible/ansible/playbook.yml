@@ -2,7 +2,11 @@
 - hosts: localhost
   become: yes
   roles:
+<<<<<<< HEAD
     - { role: base, tags: ['base'] }
+=======
+    - { role: linux.base, tags: ['base'] }
+>>>>>>> aa11044 (Update)
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"

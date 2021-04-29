@@ -7,4 +7,8 @@ if [ ! -z "$DEBUG" ]; then
 fi
 
 set -x
+<<<<<<< HEAD
 ansible-playbook ./all.yml --check --diff 
+=======
+ansible-playbook ./playbook.yml --check --diff 
+>>>>>>> aa11044 (Update)
