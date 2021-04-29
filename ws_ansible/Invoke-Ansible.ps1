@@ -5,15 +5,7 @@ param (
 )
 $IsDebug = $PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-$WslIp = wsl hostname -I
-=======
 $WslIp = wsl hostname -i
->>>>>>> aa11044 (Update)
-=======
-$WslIp = wsl hostname -i
->>>>>>> aa11044 (Update)
 Write-Host "Found WSL ip: $WslIp"
 
 $seed = [guid]::newguid().tostring()
@@ -55,15 +47,8 @@ try {
         "$(if($IsDebug) { `"-e 'DEBUG=true'`" })",
         "$ImageSha"
     $DockerExe = get-command docker | Select-Object -ExpandProperty Source
-<<<<<<< HEAD
-<<<<<<< HEAD
-    $Command = "$DockerExe run $Arguments"
-=======
+
     $Command = "$DockerExe $Arguments"
->>>>>>> aa11044 (Update)
-=======
-    $Command = "$DockerExe $Arguments"
->>>>>>> aa11044 (Update)
     Write-Host "`nRunning command: $Command" -ForegroundColor Cyan
 
     Start-Process -FilePath $DockerExe -ArgumentList $Arguments -Wait -NoNewWindow -Verbose:$IsDebug
