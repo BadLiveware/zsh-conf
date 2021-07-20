@@ -1,3 +1,12 @@
 [submodule "ws_ansible/ansible/library/aur"]
 	path = ws_ansible/ansible/library/aur
 	url = https://github.com/pigmonkey/ansible-aur.git
+[submodule "zsh/custom/plugins/zsh-abbr"]
+	path = zsh/custom/plugins/zsh-abbr
+	url = https://github.com/olets/zsh-abbr
+[submodule "zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/custom/themes/powerlevel10k"]
+	path = zsh/custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git

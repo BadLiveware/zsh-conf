@@ -3,6 +3,7 @@ scoop/
 base_modules.ps1
 .\base_config.ps1
 base_config.ps1
+helm/
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/vim,powershell,vscode

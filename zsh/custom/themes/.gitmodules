@@ -1,0 +1,4 @@
+[submodule "powerlevel10k"]
+	shallow = true
+[submodule "zsh/custom/themes/powerlevel10k"]
+	shallow = true
