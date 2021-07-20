@@ -113,3 +113,6 @@ ZSH_HIGHLIGHT_REGEXP+=('\<('${(j:|:)${(k)ABBR_GLOBAL_USER_ABBREVIATIONS}}')$' fg
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f "$USER_CONFIG_HOME/zsh/p10k.zsh" ]] || source "$USER_CONFIG_HOME/zsh/p10k.zsh"
+
+# Completetion
+source <(kubectl completion zsh)
