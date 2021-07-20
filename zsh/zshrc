@@ -114,5 +114,16 @@ ZSH_HIGHLIGHT_REGEXP+=('\<('${(j:|:)${(k)ABBR_GLOBAL_USER_ABBREVIATIONS}}')$' fg
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f "$USER_CONFIG_HOME/zsh/p10k.zsh" ]] || source "$USER_CONFIG_HOME/zsh/p10k.zsh"
 
+alias magit="flatpak run org.gnu.emacs \
+      --no-window-system \
+      --no-init-file \
+      --load $USER_CONFIG_HOME/magit/init.el #\ 
+      # --eval '(progn (magit-status) (delete-other-windows))'"
+
 # Completetion
 source <(kubectl completion zsh)
+
+# History
+eval "$(mcfly init zsh)"
+export MCFLY_KEY_SCHEME=vim
+export MCFLY_FUZZY=true
