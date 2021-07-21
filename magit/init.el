@@ -55,6 +55,10 @@
   :config 
   (advice-add #'magit-version :override #'ignore))
 
+(use-package magit-delta
+  :straight t
+  :hook (magit-mode . magit-delta-mode))
+
 (use-package evil
   :straight t
   :ensure t
