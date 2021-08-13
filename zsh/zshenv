@@ -1,0 +1,8 @@
+# Setup go path
+export PATH=$PATH:"$(go env GOPATH)/bin"
+# Setup python path
+export PATH=$PATH:"/home/dev/.local/bin"
+# Setup cargo
+if [[ -a "$HOME/.cargo/env" ]]; then
+  . "$HOME/.cargo/env"
+fi

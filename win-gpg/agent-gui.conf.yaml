@@ -1,0 +1,13 @@
+gpg:  
+  install_path: "${USERPROFILE}\\scoop\\apps\\gnupg\\current"
+  homedir: "${USERPROFILE}\\scoop\\apps\\gnupg\\current\\home"
+gui:
+  debug: false
+  setenv: true
+  openssh: native
+  ignore_session_lock: false
+  deadline: 1m
+  pipe_name: "\\\\.\\pipe\\openssh-ssh-agent"
+  homedir: "${USERPROFILE}\\scoop\\apps\\gnupg\\current\\home"
+  gclpr:
+    port: 2850

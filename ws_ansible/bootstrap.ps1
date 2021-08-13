@@ -1,4 +1,4 @@
-#Requires -RunAsAdministrator 
+#Requires -RunAsAdministrator
 #Requires -Version 5
 
 function Main {
@@ -10,7 +10,7 @@ function Main {
   Install-SSH -UserName $UserName
   Install-DockerDesktop
   Install-Ansible
-} 
+}
 
 function Install-DockerDesktop {
   Install-WithChoco docker-desktop
@@ -19,7 +19,7 @@ function Install-DockerDesktop {
   }
   { & "$env:ProgramFiles/docker/docker/dockercli.exe -SwitchLinuxEngine" },
   { & "docker build -f $PSScriptRoot/Dockerfile.alpine . -t ansible" },
-  { & "docker run ansible" } | Invoke-Native 
+  { & "docker run ansible" } | Invoke-Native
 }
 
 function Install-Ansible {
@@ -79,31 +79,57 @@ function Test-ChocolateyPackageInstalled {
   )
 
   Process {
-    if (Test-Path -Path $env:ChocolateyInstall) {
-      $packageInstalled = Test-Path -Path $env:ChocolateyInstall\lib\$Package
+    $Matches = (Invoke-Native { choco.exe list -lo --limitoutput } | where { $_ -like "$Package|*" } | measure -l).lines
+    if ($Matches -gt 0) {
+        if ($Matches -gt 1) {
+            throw "Found more than 1 package for $Package"
+        }
+        return $true
     }
-    else {
-      throw "Can't find a chocolatey install directory..."
-    }
-
-    return $packageInstalled
+    return $false
   }
 }
 
 function Install-Scoop {
-  Set-ExecutionPolicy Bypass -Scope Process -Force; 
-  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
+  Set-ExecutionPolicy Bypass -Scope Process -Force;
+  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 
   Write-Host "Downloading and installing scoop"
   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 }
 
 function Install-Choco {
-  Set-ExecutionPolicy Bypass -Scope Process -Force; 
-  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
+  Set-ExecutionPolicy Bypass -Scope Process -Force;
+  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 
   Write-Host "Downloading and installing chocolatey"
   Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+}
+
+function Get-ExistingSshKeyPair {
+  $PrivateKey = Get-ChildItem -Path "$Env:USERPROFILE/.ssh/*" -Filter "id_*"
+  | Where-Object { $_.extension -eq "" }
+  | Where-Object { Test-Path -PathType Leaf -Path "$($_.FullName).pub" }
+  | Select-Object -First 1
+
+  if ($PrivateKey -ne $null) {
+    $PublicKey = Get-Item -Path "$($PrivateKey.FullName).pub"
+  }
+
+  return $PrivateKey, $PublicKey
+}
+
+function New-SshKey {
+  param (
+    $Algorithm
+  )
+  $AlgoNorm = $Algorithm.ToLowerInvariant()
+
+  $SshKeyLoc = "$env:USERPROFILE/.ssh/id_$AlgoNorm"
+  if (-not (Test-Path $SshKeyLoc)) {
+    Write-Host "Generating ssh key: $SshKeyLoc"
+    & ssh-keygen -q -f $SshKeyLoc -t $AlgoNorm -P """"
+  }
 }
 
 function Install-SSH {
@@ -113,22 +139,18 @@ function Install-SSH {
   Write-Host "Installing openssh"
   Install-WithChoco openssh -Params '"/SSHServerFeature"'
 
-  $SshKeyLoc = "$env:USERPROFILE/.ssh/id_ed25519"
-  if (-not (Test-Path $SshKeyLoc)) {
-    Write-Host "Generating ssh key: $SshKeyLoc"
-    & ssh-keygen -q -f $SshKeyLoc -t ed25519 -P """"
+  $PrivateKey, $PublicKey = Get-ExistingSshKeyPair
+  if ($PrivateKey -eq $null) {
+    New-SshKey -Algorithm Ed25519
+    $PrivateKey, $PublicKey = Get-ExistingSshKeyPair
   }
-  else {
-    Write-Host "$SshKeyLoc key exists, skipping generation"
-  }
-  $SshKey = Get-Content "$SshKeyLoc.pub"
 
   $AdminKeyFile = "$Env:ProgramData/ssh/administrators_authorized_keys"
   $UserKeyFile = "$Env:USERPROFILE/.ssh/authorized_keys"
-  $AdminKeyFile, $UserKeyFile | Add-KeyIfNotExists -Key $SshKey 
+  $AdminKeyFile, $UserKeyFile | Add-KeyIfNotExists -Key $PublicKey
 
   Write-Host "Setting admin authorized keys ACL"
-  $Acl = Get-Acl $AdminKeyFile 
+  $Acl = Get-Acl $AdminKeyFile
   $Acl.SetAccessRuleProtection($true, $false)
   $AdministratorsRule = New-Object System.Security.Accesscontrol.FileSystemAccessRule("Administrators", "FullControl", "Allow")
   $SystemRule = New-Object System.Security.Accesscontrol.FileSystemAccessRule("SYSTEM", "FullControl", "Allow")
@@ -136,8 +158,12 @@ function Install-SSH {
   $Acl.SetAccessRule($SystemRule)
   $Acl | Set-Acl
 
-
-  "mkdir -p ~/.ssh/ && cat /mnt/c/Users/flars/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys && chmod 700 ~/.ssh && cp /mnt/c/Users/$UserName/.ssh/id_ed25519 ~/.ssh/ && chmod 0600 ~/.ssh/id_ed25519" | Invoke-Bash 
+  $PublicKeyContent = Get-Content $PublicKey
+  "mkdir -p ~/.ssh/ && \
+  echo "$PublicKey" >> ~/.ssh/authorized_keys && \
+  chmod 700 ~/.ssh && \
+  cp /mnt/c/Users/$UserName/.ssh/id_ed25519 ~/.ssh/ && \
+  chmod 0600 ~/.ssh/id_ed25519" | Invoke-Bash
 }
 
 function Add-KeyIfNotExists {
@@ -145,8 +171,8 @@ function Add-KeyIfNotExists {
     [parameter(ValueFromPipeline)]$File,
     $Key
   )
-  PROCESS { 
-    
+  PROCESS {
+
     $FileContent = if (Test-Path $File) { Get-Content $File } else { "" }
     if (-not ($Key -in $FileContent)) {
       Write-Host "Adding key to $File"
@@ -158,11 +184,53 @@ function Add-KeyIfNotExists {
   }
 }
 
+function Set-RunOnce
+  <#
+      .SYNOPSIS
+      Sets a Runonce-Registry Key
+
+      .DESCRIPTION
+      Sets a Runonce-Key in the Computer-Registry. Every Program which will be added will run once at system startup.
+      This Command can be used to configure a computer at startup.
+
+      .EXAMPLE
+      Set-Runonce -command '%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -file c:\Scripts\start.ps1'​【30 cm】
+      Sets a Key to run Powershell at startup and execute C:\Scripts\start.ps1
+
+      .NOTES
+      Author: Holger Voges
+      Version: 1.0
+      Date: 2018-08-17
+
+      .LINK
+      https://www.netz-weise-it.training/
+  #>
+{
+    [CmdletBinding()]
+    param
+    (
+        #The Name of the Registry Key in the Autorun-Key.
+        [string]
+        $KeyName = 'Run',
+
+        #Command to run
+        [string]
+        $Command = '%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -file c:\Scripts\run1.ps1'​【30 cm】
+
+    )
+
+    if (-not ((Get-Item -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce).$KeyName )) {
+        New-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command -PropertyType ExpandString
+    }
+    else {
+        Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command -PropertyType ExpandString
+    }
+}
+
 function Install-WSL {
   if (-not (Test-ChocolateyPackageInstalled -Package wsl2)) {
     Install-WithChoco wsl2 -Params "/Version:2 /Retry:true"
-    $RunOnceKey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
-    Set-ItemProperty $RunOnceKey "NextRun" "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -ExecutionPolicy Unrestricted -File $PSCommandPath"
+    Set-RunOnce "configBootstrap" "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe -ExecutionPolicy Unrestricted -File $PSCommandPath"
     Write-Host "This script requires a reboot after installing WSL2, the script will autorun after the reboot is complete"
 
     $EndTime = [datetime]::UtcNow.AddSeconds(10)
@@ -175,9 +243,9 @@ function Install-WSL {
   }
 
 
-  # $WSL = "Microsoft-Windows-Subsystem-Linux" 
+  # $WSL = "Microsoft-Windows-Subsystem-Linux"
   # $VMP = "VirtualMachinePlatform"
-  # $FeatureChanged = $WSL, $VMP | Enable-Feature 
+  # $FeatureChanged = $WSL, $VMP | Enable-Feature
 
   # if ($FeatureChanged) {
   #   Write-Host "At least one feature enabled. Restart requires.`nRun this script again after reboot"
@@ -200,10 +268,12 @@ function Install-WSL {
 
   Write-Host "Setting default version to WSL2"
   wsl --set-default-version 2
+
+  wsl -d Arch --exec "sudo pacman-key --init"
 }
 
 # Wrapper for native command execution
-#   Powershell/CMD is insane when it comes to native execution 
+#   Powershell/CMD is insane when it comes to native execution
 function script:Invoke-Native {
   [cmdletbinding()]
   param (
@@ -213,7 +283,7 @@ function script:Invoke-Native {
   )
   BEGIN {
     $backupErrorActionPreference = $ErrorActionPreference
- 
+
     $ErrorActionPreference = "Continue"
     try {
       & $ScriptBlock 2>&1 | ForEach-Object -Process `

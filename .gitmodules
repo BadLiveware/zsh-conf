@@ -10,3 +10,6 @@
 [submodule "zsh/custom/themes/powerlevel10k"]
 	path = zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "bin/kubectx"]
+	path = bin/kubectx
+	url = https://github.com/ahmetb/kubectx
