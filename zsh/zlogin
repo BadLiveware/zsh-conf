@@ -1,0 +1,17 @@
+# Are we in the bottle?
+if [[ ! -v INSIDE_GENIE ]]; then
+  read -t 3 -p "yn? * Preparing to enter genie bottle (in 3s); abort? " yn
+  echo
+
+  if [[ $yn != "y" ]]; then
+    echo "Starting genie:"
+    exec /usr/bin/genie -s
+  fi
+fi
+
+# Display bottle warning                                                                                                            
+if [[ -v INSIDE_GENIE ]]; then                                                                                                        
+  echo -e "\e[92m * Safely within bottle.\e[39m"                                                                                    
+else                                                                                                                                  
+  echo -e "\e[97;101m * WARNING: Operating outside genie bottle. Systemd-dependent functions won't.\e[39m \e[0m"                          
+fi
