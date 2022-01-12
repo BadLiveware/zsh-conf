@@ -45,6 +45,9 @@ ABBR_DEFAULT_BINDINGS=0
 source $my_plugins/zsh-abbr/zsh-abbr.zsh
 source $my_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+source $my_features/ssh-agent.zsh
+source $my_plugins/ohmyzsh/plugins/ssh-agent/ssh-agent.plugin.zsh
+
 source $my_modules/keys.zsh
 source $my_modules/completion.zsh
 source $my_modules/aliases.zsh

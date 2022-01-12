@@ -13,3 +13,9 @@
 [submodule "plugins/pure"]
 	path = plugins/pure
 	url = https://github.com/sindresorhus/pure.git
+[submodule "plugins/ohmyzsh"]
+	path = plugins/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh
+[submodule "ohmyzsh"]
+	path = plugins/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh
