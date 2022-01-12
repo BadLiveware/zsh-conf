@@ -57,6 +57,3 @@ if [ "x$COMPLETION_WAITING_DOTS" = "xtrue" ]; then
 fi
 
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
-
-source <(kubectl completion zsh)
-compdef kubecolor=kubectl
