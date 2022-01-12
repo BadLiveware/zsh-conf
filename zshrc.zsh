@@ -46,15 +46,14 @@ source $my_plugins/zsh-abbr/zsh-abbr.zsh
 source $my_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source $my_modules/keys.zsh
-source $my_modules/history.zsh
 source $my_modules/completion.zsh
 source $my_modules/aliases.zsh
 source $my_modules/correction.zsh
 source $my_modules/stack.zsh
 source $my_modules/edit-cmd-line.zsh
 source $my_modules/abbreviations.zsh
-source $my_modules/kubernetes.zsh
 source $my_features/history.zsh
+source $my_features/kubernetes.zsh
 
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
