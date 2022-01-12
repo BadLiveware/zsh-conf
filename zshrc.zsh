@@ -1,7 +1,8 @@
 config_path=`dirname $0`
 my_modules="$config_path/modules"
 my_plugins="$config_path/plugins"
-fpath=( $config_path $my_modules $my_plugins $my_plugins/zsh-completions/src $my_plugins/pure $fpath )
+my_features="$config_path/features"
+fpath=( $config_path $my_modules $my_features $my_plugins $my_plugins/zsh-completions/src $my_plugins/pure $fpath )
 
 autoload -U promptinit && promptinit
 prompt pure
@@ -53,6 +54,7 @@ source $my_modules/stack.zsh
 source $my_modules/edit-cmd-line.zsh
 source $my_modules/abbreviations.zsh
 source $my_modules/kubernetes.zsh
+source $my_features/history.zsh
 
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
