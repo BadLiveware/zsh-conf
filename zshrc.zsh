@@ -42,6 +42,7 @@ function update_go_tools() {
 }
 
 ABBR_DEFAULT_BINDINGS=0
+source $my_plugins/ohmyzsh/plugins/vi-mode/vi-mode.plugin.zsh
 source $my_plugins/zsh-abbr/zsh-abbr.zsh
 source $my_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -57,10 +58,7 @@ source $my_modules/edit-cmd-line.zsh
 source $my_modules/abbreviations.zsh
 source $my_features/history.zsh
 source $my_features/kubernetes.zsh
-
-if command -v fasd >/dev/null 2>&1; then
-  eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
-fi
+source $my_features/fasd.zsh
 
 # https://gist.github.com/magicdude4eva/2d4748f8ef3e6bf7b1591964c201c1ab
 ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
