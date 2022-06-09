@@ -33,6 +33,8 @@ set shellcmdflag=-noprofile\ -Nologo\ -noninteractive\ -command
 set shellpipe=|
 set shellredir=>
 
+set clipboard=unnamedplus
+
 " Programs
 let g:python_host_prog = 'C:\Python27\python.exe' 
 let g:python3_host_prog = 'C:\Python38\python.exe' 
