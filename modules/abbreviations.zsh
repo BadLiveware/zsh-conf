@@ -1,4 +1,5 @@
-ABBR_QUIET=1
+export ABBR_QUIET=1
+export ABBR_FORCE=1
 
 abbr g="git"
 abbr gs="git status"

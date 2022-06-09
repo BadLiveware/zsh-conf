@@ -60,6 +60,7 @@ source $my_features/history.zsh
 source $my_features/kubernetes.zsh
 source $my_features/fasd.zsh
 source $my_features/zoxide.zsh
+source $my_features/direnv.zsh
 
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"

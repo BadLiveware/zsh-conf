@@ -12,7 +12,7 @@ merge_kubeconfigs
 # https://sbulav.github.io/kubernetes/using-fzf-with-kubectl/
 kubectl-get-fzf() {
   preview_cmd="kubectl neat get -- $1 {1} -n {2} -oyaml \
-    | batcat --color=always --language=yaml --style=plain"
+    | bat --color=always --language=yaml --style=plain"
 
   kubectl get $* -o custom-columns='NAME:.metadata.name,NAMESPACE:.metadata.namespace' |
     fzf --height 90% --nth 2 --header-lines 1 \
@@ -27,7 +27,7 @@ kubectl-get-all-fzf() {
   kubectl get-all $* -o name 2>/dev/null |
     fzf --height 90% --ansi \
       --multi \
-      --preview 'sleep 0.2;kubectl neat get {} | batcat --color=always --language=yaml --style=plain' \
+      --preview 'sleep 0.2;kubectl get -o yaml {} | bat --color=always --language=yaml --style=plain' \
       --bind "ctrl-\:execute(kubectl get {+} -o yaml | nvim )" \
       --bind "ctrl-r:reload(kubectl get-all $* -o name 2> /dev/null)" --header 'Press CTRL-R to reload' \
       --bind "ctrl-f:preview-half-page-down" \
@@ -67,8 +67,8 @@ kdasel() {
 }
 
 abbr k="kubectl"
-abbr kc="kubectx"
-abbr kn="kubens"
+abbr kc="kubie ctx"
+abbr kn="kubie ns"
 abbr kf="kubectl fuzzy"
 abbr kd="kubectl run -i --rm --restart=Never debug-pod-$(cat /dev/urandom | base64 | tr -dc '0-9a-zA-Z' | head -c10 | tr '[:upper:]' '[:lower:]') --image=busybox --annotations="sidecar.istio.io/inject=false" -- sh"
 alias kgf="kubectl-get-fzf"
