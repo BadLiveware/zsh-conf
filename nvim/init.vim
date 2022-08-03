@@ -20,18 +20,18 @@ Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " General
-language en_gb
-set spell spelllang=en_gb
+" language en_US
+" set spell spelllang=en_US
 
 " Windows specifics 
 source $VIMRUNTIME/mswin.vim
 set keymodel-=stopsel
 
 " Shell
-set shell=pwsh.exe
-set shellcmdflag=-noprofile\ -Nologo\ -noninteractive\ -command
-set shellpipe=|
-set shellredir=>
+set shell=zsh
+" set shellcmdflag=-noprofile\ -Nologo\ -noninteractive\ -command
+" set shellpipe=|
+" set shellredir=>
 
 set clipboard=unnamedplus
 

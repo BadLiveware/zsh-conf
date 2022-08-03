@@ -1,0 +1,29 @@
+2022-07-07 10:51:26,679 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2022-07-07 10:51:26,685 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'config_helper']
+2022-07-07 10:51:26,690 DEBUG    root            Running [gcloud.config.config-helper] with arguments: [--format: "json"]
+2022-07-07 10:51:44,009 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
+2022-07-07 10:51:44,013 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2022-07-07 10:51:44,274 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2022-07-07 10:51:44,290 INFO     root            Display format: "default json"
+2022-07-07 10:51:44,290 INFO     ___FILE_ONLY___ {
+  "configuration": {
+    "active_configuration": "default",
+    "properties": {
+      "core": {
+        "account": "fredrik.larsson@tradera.com",
+        "disable_usage_reporting": "True"
+      }
+    }
+  },
+  "credential": {
+    "access_token": "ya29.a0AVA9y1uGGhyorKnYT8x9FJ9xCZ6hd88sWqffEgu1CcfHG5d9Uj9aGWKMGIKwh-A1Np6HZlVbl5QRLdHZky6-HqmQ8u1E7P_SHmS-QaG7HRQvpiueKTicr4_LGwiQi-C60wc_b7a8TjwvlwoSz8FtOaT_3r0qO4Z6k8VWJg",
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiZDY4NWY1ZThmYzYyZDc1ODcwNWMxZWIwZThhNzUyNGM0NzU5NzUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMjU1NTk0MDU1OS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjMyNTU1OTQwNTU5LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA5NjgxNjk0MjU0NDkyNTA0ODk1IiwiaGQiOiJ0cmFkZXJhLmNvbSIsImVtYWlsIjoiZnJlZHJpay5sYXJzc29uQHRyYWRlcmEuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJ4M1p2UHFWOGVXblZ4Q2phdUpjcklnIiwiaWF0IjoxNjU3MTgzOTA0LCJleHAiOjE2NTcxODc1MDR9.NkE7fHJIR1Si599F_SndM4qV1d2E3JVaLxa8g958iuhxz0T1KP2CutE07MqVCggFsjynFEKbFv_WtHDo393y8a4eTfdxcoRpd_1EN6DRCu-1BE2Vi2H8a0FSTINmFD4-PHC9tx5lxT1zAnhj4JDyWLzv4_XKtBaPo9cEa6bSPaNDoTCtAlnlGLpynV2ZHIS9iLg1wyWHFByI64NsXZd87KMHFre6de1lfFA0mQjd0hfR1Z_FdQlB7JIOhZxl4qIoQyvPRoWI8eF4vMmCdJnyWggvgz-6mt5AyxTKgPWb5irQM8yqw1FWWICVtvgXB3DxRW3ePukjFWry2jJvruJgfQ",
+    "token_expiry": "2022-07-07T09:51:43Z"
+  },
+  "sentinels": {
+    "config_sentinel": "/home/dev/.config/gcloud/config_sentinel"
+  }
+}
+2022-07-07 10:51:44,290 INFO     ___FILE_ONLY___ 
+
+2022-07-07 10:51:44,291 DEBUG    root            SDK update checks are disabled.

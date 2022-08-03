@@ -1,0 +1,27 @@
+2022-07-19 13:51:47,812 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2022-07-19 13:51:47,813 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'config_helper']
+2022-07-19 13:51:47,815 DEBUG    root            Running [gcloud.config.config-helper] with arguments: [--format: "json"]
+2022-07-19 13:51:47,822 INFO     root            Display format: "default json"
+2022-07-19 13:51:47,822 INFO     ___FILE_ONLY___ {
+  "configuration": {
+    "active_configuration": "default",
+    "properties": {
+      "core": {
+        "account": "fredrik.larsson@tradera.com",
+        "disable_usage_reporting": "True",
+        "project": "tradera-it-secrets"
+      }
+    }
+  },
+  "credential": {
+    "access_token": "ya29.A0AVA9y1vAsck4Y_5Et5--OtrOAIg2a3HzjwCESn5j_mdCuhRrog2tQ2obw7o0xhae0Jfse_MJ7hxSBNpKr3nSA5xnnOMMXe3z45tj-Et6k0B1xKE1hFGkq4Er0cp--GFtYA0tO56uR2bsXurhC10h4UF7hgiiNJhiiIQ6YUNnWUtBVEFTQVRBU0ZRRTY1ZHI4WGxiQkVIM01JcENMM3h1eHg5eDh3dw0171",
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjYzMWZhZTliNTk0MGEyZDFmYmZmYjAwNDAzZDRjZjgwYTIxYmUwNGUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMjU1NTk0MDU1OS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjMyNTU1OTQwNTU5LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA5NjgxNjk0MjU0NDkyNTA0ODk1IiwiaGQiOiJ0cmFkZXJhLmNvbSIsImVtYWlsIjoiZnJlZHJpay5sYXJzc29uQHRyYWRlcmEuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiIwdjd2UFR2NkhSeHo2ZWNiR1AtbENBIiwiaWF0IjoxNjU4MjMxNTAxLCJleHAiOjE2NTgyMzUxMDF9.JI5wjH1ayTeJvwCmju00E4hUdMP6GC8kuwlKXod6UQkaptVr7EEU7VBaqFM-cdzo3Jj-N3u4thPfOt5L7LJgEHCddn9C59IiGUg7YWLx5VJQviKyPAmI9keyHZ8ZWBgJ8Bxk5d8sIc6QR28IVpI4MzOCs4B4SnuaxgfG69Hp-y2dkFcO6_9QAV9kogSxddNsNo7rks54g__svXCJGabdoSkh54EkECuPaWkhnoFJdRo89TfiKUUymr8S4r64ald2HFBQQ2u6YpqQWJ4D-1m2YQ_nO1_OhG-8pwxzRpD6Uc81TG-81myXGW-LPOGyuiIPAvL2Wk98hT-lOnAWq0W64w",
+    "token_expiry": "2022-07-19T12:51:41Z"
+  },
+  "sentinels": {
+    "config_sentinel": "/home/dev/.config/gcloud/config_sentinel"
+  }
+}
+2022-07-19 13:51:47,822 INFO     ___FILE_ONLY___ 
+
+2022-07-19 13:51:47,822 DEBUG    root            SDK update checks are disabled.

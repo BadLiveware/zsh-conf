@@ -1,0 +1,14 @@
+2022-07-08 10:39:18,790 DEBUG    root            Loaded Command Group: ['gcloud', 'iam']
+2022-07-08 10:39:18,790 DEBUG    root            Loaded Command Group: ['gcloud', 'iam', 'service_accounts']
+2022-07-08 10:39:18,792 DEBUG    root            Loaded Command Group: ['gcloud', 'iam', 'service-accounts', 'get_iam_policy']
+2022-07-08 10:39:18,794 DEBUG    root            Running [gcloud.iam.service-accounts.get-iam-policy] with arguments: [SERVICE_ACCOUNT: "app-translation-on-demand@tradera-development.iam.gserviceaccount.com"]
+2022-07-08 10:39:18,810 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): iam.googleapis.com:443
+2022-07-08 10:39:19,544 DEBUG    urllib3.connectionpool https://iam.googleapis.com:443 "POST /v1/projects/-/serviceAccounts/app-translation-on-demand@tradera-development.iam.gserviceaccount.com:getIamPolicy?alt=json&options.requestedPolicyVersion=3 HTTP/1.1" 200 None
+2022-07-08 10:39:19,549 INFO     root            Display format: "default"
+2022-07-08 10:39:19,549 INFO     ___FILE_ONLY___ etag
+2022-07-08 10:39:19,549 INFO     ___FILE_ONLY___ :
+2022-07-08 10:39:19,549 INFO     ___FILE_ONLY___  
+2022-07-08 10:39:19,550 INFO     ___FILE_ONLY___ ACAB
+2022-07-08 10:39:19,550 INFO     ___FILE_ONLY___ 
+
+2022-07-08 10:39:19,550 DEBUG    root            SDK update checks are disabled.

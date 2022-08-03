@@ -1,0 +1,8 @@
+2022-07-04 17:05:04,045 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2022-07-04 17:05:04,046 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'config_helper']
+2022-07-04 17:05:04,048 DEBUG    root            Running [gcloud.config.config-helper] with arguments: [--format: "json"]
+2022-07-04 17:05:13,760 INFO     ___FILE_ONLY___ 
+
+Command killed by keyboard interrupt
+
+

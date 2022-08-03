@@ -1,0 +1,10 @@
+2022-07-07 12:25:31,682 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2022-07-07 12:25:31,685 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'configure_docker']
+2022-07-07 12:25:31,686 DEBUG    root            Running [gcloud.auth.configure-docker] with arguments: [REGISTRIES: "eu.gcr.io/"]
+2022-07-07 12:25:31,879 INFO     ___FILE_ONLY___ Adding credentials for: eu.gcr.io/
+
+2022-07-07 12:25:31,879 WARNING  root            eu.gcr.io/ is not a supported registry
+2022-07-07 12:25:31,879 INFO     ___FILE_ONLY___ gcloud credential helpers already registered correctly.
+
+2022-07-07 12:25:31,880 INFO     root            Display format: "default"
+2022-07-07 12:25:31,880 DEBUG    root            SDK update checks are disabled.

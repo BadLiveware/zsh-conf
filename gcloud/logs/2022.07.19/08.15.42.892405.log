@@ -1,0 +1,61 @@
+2022-07-19 08:15:42,892 DEBUG    root            Loaded Command Group: ['gcloud', 'projects']
+2022-07-19 08:15:42,899 DEBUG    root            Loaded Command Group: ['gcloud', 'projects', 'get_iam_policy']
+2022-07-19 08:15:42,901 DEBUG    root            Running [gcloud.projects.get-iam-policy] with arguments: [PROJECT_ID_OR_NUMBER: "tradera-it-secrets"]
+2022-07-19 08:15:42,919 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudresourcemanager.googleapis.com:443
+2022-07-19 08:15:43,798 DEBUG    urllib3.connectionpool https://cloudresourcemanager.googleapis.com:443 "POST /v1/projects/tradera-it-secrets:getIamPolicy?alt=json HTTP/1.1" 200 None
+2022-07-19 08:15:43,801 INFO     root            Display format: "default"
+2022-07-19 08:15:43,802 INFO     ___FILE_ONLY___ bindings
+2022-07-19 08:15:43,802 INFO     ___FILE_ONLY___ :
+2022-07-19 08:15:43,802 INFO     ___FILE_ONLY___ 
+
+2022-07-19 08:15:43,802 INFO     ___FILE_ONLY___ -
+2022-07-19 08:15:43,802 INFO     ___FILE_ONLY___  
+2022-07-19 08:15:43,802 INFO     ___FILE_ONLY___ members
+2022-07-19 08:15:43,802 INFO     ___FILE_ONLY___ :
+2022-07-19 08:15:43,802 INFO     ___FILE_ONLY___ 
+
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___   
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ -
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___  
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ serviceAccount:gapps-reports@system.gserviceaccount.com
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ 
+
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___   
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ role
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ :
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___  
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ roles/editor
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ 
+
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ -
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___  
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ members
+2022-07-19 08:15:43,803 INFO     ___FILE_ONLY___ :
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___ 
+
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___   
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___ -
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___  
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___ user:admin.claes.sahlstrom@tradera.com
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___ 
+
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___   
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___ role
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___ :
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___  
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___ roles/owner
+2022-07-19 08:15:43,804 INFO     ___FILE_ONLY___ 
+
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___ etag
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___ :
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___  
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___ BwXipWANuNc=
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___ 
+
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___ version
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___ :
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___  
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___ 1
+2022-07-19 08:15:43,805 INFO     ___FILE_ONLY___ 
+
+2022-07-19 08:15:43,806 DEBUG    root            SDK update checks are disabled.

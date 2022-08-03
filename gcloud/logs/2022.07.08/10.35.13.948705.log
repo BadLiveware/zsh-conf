@@ -1,0 +1,3 @@
+2022-07-08 10:35:13,949 DEBUG    root            Loaded Command Group: ['gcloud', 'projects']
+2022-07-08 10:35:13,953 DEBUG    root            Loaded Command Group: ['gcloud', 'projects', 'describe']
+2022-07-08 10:35:13,954 ERROR    root            (gcloud.projects.describe) argument PROJECT_ID_OR_NUMBER: Must be specified.

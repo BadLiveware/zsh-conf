@@ -1,0 +1,9 @@
+2022-07-26 14:53:17,463 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2022-07-26 14:53:17,467 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'configure_docker']
+2022-07-26 14:53:17,468 DEBUG    root            Running [gcloud.auth.configure-docker] with arguments: [REGISTRIES: "europe-west1-docker.pkg.dev"]
+2022-07-26 14:53:17,663 INFO     ___FILE_ONLY___ Adding credentials for: europe-west1-docker.pkg.dev
+
+2022-07-26 14:53:19,583 INFO     ___FILE_ONLY___ Docker configuration file updated.
+
+2022-07-26 14:53:19,583 INFO     root            Display format: "default"
+2022-07-26 14:53:19,584 DEBUG    root            SDK update checks are disabled.

@@ -1,0 +1,124 @@
+2022-07-26 13:37:36,532 DEBUG    root            Loaded Command Group: ['gcloud', 'artifacts']
+2022-07-26 13:37:36,535 DEBUG    root            Loaded Command Group: ['gcloud', 'artifacts', 'locations']
+2022-07-26 13:37:36,549 DEBUG    root            Loaded Command Group: ['gcloud', 'artifacts', 'locations', 'list']
+2022-07-26 13:37:36,550 DEBUG    root            Running [gcloud.artifacts.locations.list] with arguments: []
+2022-07-26 13:37:49,195 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): artifactregistry.googleapis.com:443
+2022-07-26 13:37:50,109 DEBUG    urllib3.connectionpool https://artifactregistry.googleapis.com:443 "GET /v1beta2/projects/tradera-deploy/locations?alt=json HTTP/1.1" 200 None
+2022-07-26 13:37:50,116 INFO     root            Display format: "    table(
+      name:label=LOCATIONS
+    )"
+2022-07-26 13:37:50,117 INFO     ___FILE_ONLY___ LOCATIONS
+2022-07-26 13:37:50,117 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ asia
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ asia-east1
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ asia-east2
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ asia-northeast1
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ asia-northeast2
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ asia-northeast3
+2022-07-26 13:37:50,118 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ asia-south1
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ asia-south2
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ asia-southeast1
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ asia-southeast2
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ australia-southeast1
+2022-07-26 13:37:50,119 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ australia-southeast2
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ europe
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ europe-central2
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ europe-north1
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ europe-southwest1
+2022-07-26 13:37:50,120 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ europe-west1
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ europe-west2
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ europe-west3
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ europe-west4
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ europe-west6
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,121 INFO     ___FILE_ONLY___ europe-west8
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ europe-west9
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ northamerica-northeast1
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ northamerica-northeast2
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ southamerica-east1
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ southamerica-west1
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ us
+2022-07-26 13:37:50,122 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ us-central1
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ us-east1
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ us-east4
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ us-east5
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ us-south1
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ us-west1
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ us-west2
+2022-07-26 13:37:50,123 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,124 INFO     ___FILE_ONLY___ us-west3
+2022-07-26 13:37:50,124 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,124 INFO     ___FILE_ONLY___ us-west4
+2022-07-26 13:37:50,124 INFO     ___FILE_ONLY___ 
+
+2022-07-26 13:37:50,124 DEBUG    root            SDK update checks are disabled.

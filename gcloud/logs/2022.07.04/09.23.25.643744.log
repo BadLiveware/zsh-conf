@@ -1,0 +1,92 @@
+2022-07-04 09:23:25,661 DEBUG    root            Loaded Command Group: ['gcloud', 'beta', 'container', 'node_pools']
+2022-07-04 09:23:25,677 DEBUG    root            Loaded Command Group: ['gcloud', 'beta', 'container', 'node-pools', 'create']
+2022-07-04 09:23:25,733 DEBUG    root            Running [gcloud.beta.container.node-pools.create] with arguments: [--cluster: "kubernetes", --disk-size: "137438953472", --disk-type: "pd-ssd", --enable-autoscaling: "True", --ephemeral-storage: "OrderedDict([('local-ssd-count', 1)])", --machine-type: "n2d-standard-4", --max-nodes: "5", --max-surge-upgrade: "1", --max-unavailable-upgrade: "0", --min-nodes: "3", --node-labels: "OrderedDict([('rabbitmq', 'allow')])", --node-taints: "OrderedDict([('rabbitmq', 'allow:NoSchedule')])", --project: "tradera-development", --region: "europe-west1-b", --workload-metadata-from-node: "GKE_METADATA", NAME: "rabbitmq-stable"]
+2022-07-04 09:23:25,736 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:23:27,164 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "POST /v1beta1/projects/tradera-development/locations/europe-west1-b/clusters/kubernetes/nodePools?alt=json HTTP/1.1" 200 None
+2022-07-04 09:23:27,167 INFO     ___FILE_ONLY___ Creating node pool rabbitmq-stable...
+2022-07-04 09:23:27,168 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:23:27,341 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:23:32,350 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:23:32,530 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:23:37,539 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:23:37,779 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:23:42,787 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:23:42,957 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:23:47,967 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:23:48,162 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:23:53,170 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:23:53,335 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:23:58,347 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:23:58,539 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:03,547 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:03,708 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:08,716 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:08,931 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:13,942 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:14,113 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:19,121 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:19,270 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:24,278 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:24,450 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:29,460 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:29,634 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:34,639 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:34,822 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:39,829 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:39,994 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:44,999 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:45,171 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:50,179 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:50,351 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:24:55,359 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:24:55,564 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:25:00,568 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:25:00,731 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:25:05,739 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:25:05,905 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:25:10,909 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:25:11,103 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:25:16,112 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:25:16,285 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/operations/operation-1656919401693-ab554db6?alt=json HTTP/1.1" 200 None
+2022-07-04 09:25:16,287 INFO     root            Operation <Operation
+ clusterConditions: []
+ endTime: '2022-07-04T07:25:08.752435567Z'
+ name: 'operation-1656919401693-ab554db6'
+ nodepoolConditions: []
+ operationType: OperationTypeValueValuesEnum(CREATE_NODE_POOL, 7)
+ selfLink: 'https://container.googleapis.com/v1beta1/projects/255305809508/zones/europe-west1-b/operations/operation-1656919401693-ab554db6'
+ startTime: '2022-07-04T07:23:21.693121992Z'
+ status: StatusValueValuesEnum(DONE, 3)
+ targetLink: 'https://container.googleapis.com/v1beta1/projects/255305809508/zones/europe-west1-b/clusters/kubernetes/nodePools/rabbitmq-stable'
+ zone: 'europe-west1-b'> succeeded after 109.120 seconds
+2022-07-04 09:25:16,417 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): container.googleapis.com:443
+2022-07-04 09:25:16,594 DEBUG    urllib3.connectionpool https://container.googleapis.com:443 "GET /v1beta1/projects/tradera-development/locations/europe-west1-b/clusters/kubernetes/nodePools/rabbitmq-stable?alt=json HTTP/1.1" 200 None
+2022-07-04 09:25:16,596 INFO     ___FILE_ONLY___ Created [https://container.googleapis.com/v1beta1/projects/tradera-development/zones/europe-west1-b/clusters/kubernetes/nodePools/rabbitmq-stable].
+
+2022-07-04 09:25:16,597 INFO     root            Display format: "
+     table(
+        name,
+        config.machineType,
+        config.diskSizeGb,
+        version:label=NODE_VERSION
+     )
+"
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___ NAME
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___              
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___ MACHINE_TYPE
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___     
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___ DISK_SIZE_GB
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___   
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___ NODE_VERSION
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___ 
+
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___ rabbitmq-stable
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___   
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___ n2d-standard-4
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___   
+2022-07-04 09:25:16,601 INFO     ___FILE_ONLY___ 128
+2022-07-04 09:25:16,602 INFO     ___FILE_ONLY___            
+2022-07-04 09:25:16,602 INFO     ___FILE_ONLY___ 1.21.11-gke.1900
+2022-07-04 09:25:16,602 INFO     ___FILE_ONLY___ 
+
+2022-07-04 09:25:16,602 DEBUG    root            SDK update checks are disabled.

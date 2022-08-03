@@ -1,0 +1,16 @@
+2022-07-26 14:53:36,577 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2022-07-26 14:53:36,581 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'configure_docker']
+2022-07-26 14:53:36,582 DEBUG    root            Running [gcloud.auth.configure-docker] with arguments: [REGISTRIES: "europe-west1-docker.pkg.dev,eu.gcr.io"]
+2022-07-26 14:53:36,702 WARNING  root            Your config file at [/home/dev/.docker/config.json] contains these credential helper entries:
+
+{
+  "credHelpers": {
+    "europe-west1-docker.pkg.dev": "gcloud"
+  }
+}
+2022-07-26 14:53:36,702 INFO     ___FILE_ONLY___ Adding credentials for: europe-west1-docker.pkg.dev,eu.gcr.io
+
+2022-07-26 14:53:39,992 INFO     ___FILE_ONLY___ Docker configuration file updated.
+
+2022-07-26 14:53:39,992 INFO     root            Display format: "default"
+2022-07-26 14:53:39,993 DEBUG    root            SDK update checks are disabled.

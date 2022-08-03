@@ -1,0 +1,19 @@
+2022-07-15 08:33:21,098 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2022-07-15 08:33:21,178 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'print_access_token']
+2022-07-15 08:33:21,179 DEBUG    root            Running [gcloud.auth.print-access-token] with arguments: []
+2022-07-15 08:33:33,413 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
+2022-07-15 08:33:33,416 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2022-07-15 08:33:33,647 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2022-07-15 08:33:33,668 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
+2022-07-15 08:33:33,671 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2022-07-15 08:33:33,857 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2022-07-15 08:33:33,873 INFO     root            Display format: "value(token)"
+2022-07-15 08:33:33,874 INFO     ___FILE_ONLY___ ya29.A0AVA9y1t_9jfZ288tHTH4hY797SoBhMuFOQjxlaS1Uft5u9j1-HsMERM15mFsNTrS4Sn-bTRvxMWA8AsR9HuGCl9ApULeDN77tNkxubztD61i7-n07Op6tTFJf1fgXFQ9x2hdofWuNCgEWMzoebi5vwMq5rfahehGdjlaCwYUNnWUtBVEFTQVRBU0ZRRTY1ZHI4TGNnbnBjd0tubTE4UjNRN1VyMEVfZw0173
+
+2022-07-15 08:33:33,874 DEBUG    root            SDK update checks are disabled.
+2022-07-15 08:33:33,877 INFO     ___FILE_ONLY___ 
+
+To take a quick anonymous survey, run:
+  $ gcloud survey
+
+

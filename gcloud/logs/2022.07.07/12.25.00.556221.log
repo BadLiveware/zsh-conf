@@ -1,0 +1,75 @@
+2022-07-07 12:25:00,556 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2022-07-07 12:25:00,560 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'configure_docker']
+2022-07-07 12:25:00,560 DEBUG    root            Running [gcloud.auth.configure-docker] with arguments: [--help: "None"]
+2022-07-07 12:25:00,561 DEBUG    root            Loaded Command Group: ['gcloud', 'alpha', 'auth']
+2022-07-07 12:25:00,562 DEBUG    root            Loaded Command Group: ['gcloud', 'alpha', 'auth', 'configure_docker']
+2022-07-07 12:25:00,563 DEBUG    root            Loaded Command Group: ['gcloud', 'beta', 'auth']
+2022-07-07 12:25:00,564 DEBUG    root            Loaded Command Group: ['gcloud', 'beta', 'auth', 'configure_docker']
+2022-07-07 12:25:00,580 DEBUG    root            Loaded Command Group: ['gcloud', 'help']
+2022-07-07 12:25:00,586 INFO     ___FILE_ONLY___ [m[1mNAME[m
+    gcloud auth configure-docker - register [1mgcloud[m as a Docker credential
+        helper
+
+[m[1mSYNOPSIS[m
+    [1mgcloud auth configure-docker[m [[4mREGISTRIES[m] [[4mGCLOUD_WIDE_FLAG ...[m]
+
+[m[1mDESCRIPTION[m
+    gcloud auth configure-docker adds the Docker [1mcredHelper[m entry to Docker's
+    configuration file, or creates the file if it doesn't exist. This will
+    register [1mgcloud[m as the credential helper for all Google-supported Docker
+    registries. If the Docker configuration already contains a [1mcredHelper[m
+    entry, it will be overwritten.
+
+    Note: [1mdocker[m and [1mgcloud[m need to be on the same system [1mPATH[m to work
+    correctly.
+
+    Note: This command will not work for [1mdocker[m installed via Snap, as the
+    [1mdocker[m snap package does not currently provide an interface for credential
+    helpers.
+
+    For more details on Docker registries, see
+    https://docs.docker.com/registry/.
+
+    For more details on how to authenticate to Google Container Registry using
+    this command, see
+    https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-helper.
+
+    For more details on Google Container Registry's standalone credential
+    helpers, see https://github.com/GoogleCloudPlatform/docker-credential-gcr.
+
+    For more details on Docker credential helpers, see
+    https://docs.docker.com/engine/reference/commandline/login/#credential-helpers.
+
+[m[1mEXAMPLES[m
+    To configure docker authentication after logging into gcloud, run:
+
+        $ gcloud auth configure-docker
+
+    To configure docker authentication with Container Registry, e.g., [1mgcr.io[m,
+    run:
+
+        $ gcloud auth configure-docker gcr.io
+
+[m[1mPOSITIONAL ARGUMENTS[m
+     [[4mREGISTRIES[m]
+        The comma-separated list of registries to configure the credential
+        helper for. Container Registry is a service for storing private
+        container images. For available registries, see
+        https://cloud.google.com/container-registry/docs/pushing-and-pulling#add-registry.
+
+[m[1mGCLOUD WIDE FLAGS[m
+    These flags are available to all commands: --access-token-file, --account,
+    --billing-project, --configuration, --flags-file, --flatten, --format,
+    --help, --impersonate-service-account, --log-http, --project, --quiet,
+    --trace-token, --user-output-enabled, --verbosity.
+
+    Run [1m$ gcloud help[m for details.
+
+[m[1mNOTES[m
+    These variants are also available:
+
+        $ gcloud alpha auth configure-docker
+
+        $ gcloud beta auth configure-docker
+
+[m

@@ -1,0 +1,26 @@
+2022-07-04 15:21:20,798 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2022-07-04 15:21:20,799 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'config_helper']
+2022-07-04 15:21:20,801 DEBUG    root            Running [gcloud.config.config-helper] with arguments: [--format: "json"]
+2022-07-04 15:21:20,807 INFO     root            Display format: "default json"
+2022-07-04 15:21:20,807 INFO     ___FILE_ONLY___ {
+  "configuration": {
+    "active_configuration": "default",
+    "properties": {
+      "core": {
+        "account": "fredrik.larsson@tradera.com",
+        "disable_usage_reporting": "True"
+      }
+    }
+  },
+  "credential": {
+    "access_token": "ya29.a0ARrdaM8TWOy5ZtKVVJe0LUwG7IrKTdA33Ir5JglbV85W5eTrGk6hEHbnOBK-9USrxL3BzZGh6w1yPyfEbsq6ecQddWau_sUaAB5ReobyCXSYH5mh1bWmLW3L_oPe-lG1JP-bXRSiIkXiY4nPgrWzu0IrVlfLoNJ_TMF6lA",
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiZDY4NWY1ZThmYzYyZDc1ODcwNWMxZWIwZThhNzUyNGM0NzU5NzUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMjU1NTk0MDU1OS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjMyNTU1OTQwNTU5LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA5NjgxNjk0MjU0NDkyNTA0ODk1IiwiaGQiOiJ0cmFkZXJhLmNvbSIsImVtYWlsIjoiZnJlZHJpay5sYXJzc29uQHRyYWRlcmEuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJZY2Z3X1A1bE5OYy04dmdiRXZDMmhBIiwiaWF0IjoxNjU2OTM5MTcxLCJleHAiOjE2NTY5NDI3NzF9.edAgygFAKyyM7BfO7akDyuNvIq2vPst1hOO14I_teuEl-_EVUdnEnNm8oYEc2m2tuku0xNoWwUMk_I2FwUvedkkSgKNeKIh3rKP3h3Qhvu1FS_w1NJp_NSWsj3FpvbV2ktpLPBEdF91z4SlihmBbiec0Kb8K064lJmqiG4beIOiWK_LQy1kHBCVpRAUBD7w1L0K30pkvup9ApiNahH4AGF7FVoRQJzELpD31M0D4sRYXfCPLGoVSrboNVmrNBGIs-buYrzHrZ-E9M8gDww4SJsFk9n9xnR3u2TXDFGuv3aMO1d2xteAUj3UXeS0lNe5gaQdae5I4Xf-xNlBVrS19FA",
+    "token_expiry": "2022-07-04T13:52:53Z"
+  },
+  "sentinels": {
+    "config_sentinel": "/home/dev/.config/gcloud/config_sentinel"
+  }
+}
+2022-07-04 15:21:20,807 INFO     ___FILE_ONLY___ 
+
+2022-07-04 15:21:20,808 DEBUG    root            SDK update checks are disabled.
