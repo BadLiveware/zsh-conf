@@ -19,3 +19,6 @@
 [submodule "ohmyzsh"]
 	path = plugins/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh
+[submodule "plugins/powerlevel10k"]
+	path = plugins/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git

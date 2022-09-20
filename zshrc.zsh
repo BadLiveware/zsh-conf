@@ -4,8 +4,16 @@ my_plugins="$config_path/plugins"
 my_features="$config_path/features"
 fpath=( $config_path $my_modules $my_features $my_plugins $my_plugins/zsh-completions/src $my_plugins/pure $fpath )
 
-autoload -U promptinit && promptinit
-prompt pure
+source $my_plugins/powerlevel10k/powerlevel10k.zsh-theme
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# autoload -U promptinit && promptinit
+# prompt pure
 
 autoload -U compinit
 compinit
@@ -29,6 +37,9 @@ export FZF_DEFAULT_OPTS="\
 --border \
 --color border:255 \
 --cycle"
+
+export DISPLAY=:0
+export BROWSER=/usr/bin/wslview
 
 function update_go_tools() {
   packages=(
@@ -57,14 +68,12 @@ source $my_modules/stack.zsh
 source $my_modules/edit-cmd-line.zsh
 source $my_modules/abbreviations.zsh
 source $my_features/history.zsh
-source $my_features/kubernetes.zsh
 source $my_features/fasd.zsh
 source $my_features/zoxide.zsh
 source $my_features/direnv.zsh
-
-if command -v fasd >/dev/null 2>&1; then
-  eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
-fi
+source $my_features/thefuck.zsh
+source $my_features/nvm.zsh
+source $my_features/kubernetes.zsh
 
 # https://gist.github.com/magicdude4eva/2d4748f8ef3e6bf7b1591964c201c1ab
 ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
@@ -80,5 +89,8 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 ### Fix slowness of pastes
 
-# Has to be sources last
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f $my_features/p10k.zsh ]] || source $my_features/p10k.zsh
+
+# Has to be sourced last
 source $my_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh

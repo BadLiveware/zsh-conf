@@ -1,6 +1,7 @@
 # Keep it en_GB
-export LANG="en_GB.UTF-8"
-export LANGUAGE="en_GB:en"
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US:en"
 export LC_CTYPE="en_GB.UTF-8"
 export LC_COLLATE="en_GB.UTF-8"
 export LC_MESSAGES="en_GB.UTF-8"
@@ -15,7 +16,6 @@ export LC_ADDRESS="sv_SE.UTF-8"
 export LC_TELEPHONE="sv_SE.UTF-8"
 export LC_MEASUREMENT="sv_SE.utf8"
 export LC_IDENTIFICATION="sv_SE.UTF-8"
-export LC_ALL=
 
 # DOCKER_DISTRO="ubuntu"
 # DOCKER_DIR=/mnt/wsl/shared-docker
