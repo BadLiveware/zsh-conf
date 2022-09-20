@@ -1,8 +1,0 @@
-2022-07-26 21:41:26,466 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
-2022-07-26 21:41:26,470 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'docker_helper']
-2022-07-26 21:41:26,471 DEBUG    root            Running [gcloud.auth.docker-helper] with arguments: [METHOD: "get"]
-2022-07-26 21:41:36,166 INFO     ___FILE_ONLY___ 
-
-Command killed by keyboard interrupt
-
-

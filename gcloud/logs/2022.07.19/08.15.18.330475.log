@@ -1,9 +1,0 @@
-2022-07-19 08:15:18,333 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
-2022-07-19 08:15:18,452 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'set']
-2022-07-19 08:15:18,453 DEBUG    root            Running [gcloud.config.set] with arguments: [SECTION/PROPERTY: "project", VALUE: "tradera-it-secrets"]
-2022-07-19 08:15:18,469 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudresourcemanager.googleapis.com:443
-2022-07-19 08:15:19,230 DEBUG    urllib3.connectionpool https://cloudresourcemanager.googleapis.com:443 "GET /v1/projects/tradera-it-secrets?alt=json HTTP/1.1" 200 None
-2022-07-19 08:15:19,235 INFO     ___FILE_ONLY___ Updated property [core/project].
-
-2022-07-19 08:15:19,235 INFO     root            Display format: "default"
-2022-07-19 08:15:19,236 DEBUG    root            SDK update checks are disabled.

@@ -1,9 +1,0 @@
-2022-07-07 12:25:35,607 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
-2022-07-07 12:25:35,610 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'configure_docker']
-2022-07-07 12:25:35,612 DEBUG    root            Running [gcloud.auth.configure-docker] with arguments: [REGISTRIES: "eu.gcr.io"]
-2022-07-07 12:25:35,816 INFO     ___FILE_ONLY___ Adding credentials for: eu.gcr.io
-
-2022-07-07 12:25:38,404 INFO     ___FILE_ONLY___ Docker configuration file updated.
-
-2022-07-07 12:25:38,405 INFO     root            Display format: "default"
-2022-07-07 12:25:38,405 DEBUG    root            SDK update checks are disabled.
