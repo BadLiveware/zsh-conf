@@ -4,6 +4,11 @@ base_modules.ps1
 .\base_config.ps1
 base_config.ps1
 helm/
+gcloud/
+NuGet/
+Notepadqq
+JetBrains/
+coc/
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/vim,powershell,vscode
