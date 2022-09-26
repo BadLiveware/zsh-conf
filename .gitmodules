@@ -10,9 +10,6 @@
 [submodule "plugins/zsh-syntax-highlighting"]
 	path = plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "plugins/pure"]
-	path = plugins/pure
-	url = https://github.com/sindresorhus/pure.git
 [submodule "plugins/ohmyzsh"]
 	path = plugins/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh
