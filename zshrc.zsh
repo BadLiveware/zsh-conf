@@ -2,7 +2,7 @@ config_path=`dirname $0`
 my_modules="$config_path/modules"
 my_plugins="$config_path/plugins"
 my_features="$config_path/features"
-fpath=( $config_path $my_modules $my_features $my_plugins $my_plugins/zsh-completions/src $my_plugins/pure $fpath )
+fpath=( $config_path $my_modules $my_features $my_plugins $my_plugins/zsh-completions/src $fpath )
 
 source $my_plugins/powerlevel10k/powerlevel10k.zsh-theme
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -43,7 +43,6 @@ export BROWSER=/usr/bin/wslview
 
 function update_go_tools() {
   packages=(
-    github.com/dty1er/kubecolor/cmd/kubecolor
   )
 
     for pkg in $packages; do

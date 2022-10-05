@@ -10,3 +10,4 @@ if [[ -a "$HOME/.cargo/env" ]]; then
 fi
 
 export USER_CONFIG_HOME="$HOME/.config"
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True

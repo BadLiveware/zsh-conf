@@ -1,11 +1,3 @@
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ssh-agent
-
-zstyle :omz:plugins:ssh-agent quiet yes
-zstyle :omz:plugins:ssh-agent lazy yes
-
-# zstyle :omz:plugins:ssh-agent lazy yes
-zstyle :omz:plugins:ssh-agent lifetime 4h
-
 function wrapssh() {
 	setopt shwordsplit &>/dev/null
 
@@ -40,4 +32,3 @@ function wrapssh() {
 alias ssh='wrapssh ssh'
 alias scp='wrapssh scp'
 alias rsync='wrapssh rsync'
-# alias git='wrapssh git'

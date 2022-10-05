@@ -1,6 +1,5 @@
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-
 # Merging kubeconfigs
 function merge_kubeconfigs() {
   export KUBECONFIG=""
@@ -8,7 +7,6 @@ function merge_kubeconfigs() {
     export KUBECONFIG=$KUBECONFIG:"$kubeconfig"
   done
 }
-merge_kubeconfigs
 
 # https://sbulav.github.io/kubernetes/using-fzf-with-kubectl/
 kubectl-get-fzf() {
@@ -100,7 +98,8 @@ getKubeconf() {
   fi
   PROJECT=${3:-tradera-development}
   ZONE=${4:-europe-west1-b}
-  KUBECONFIG="$USER_CONFIG_HOME/var/kubeconfig/${ZONE}-${PROJECT}-${CLUSTER}" gcloud container clusters get-credentials ${CLUSTER} --project ${PROJECT} --zone ${ZONE} ${INTERNAL_IP}
+  KUBECONFIG="$USER_CONFIG_HOME/var/kubeconfig/${ZONE}-${PROJECT}-${CLUSTER}.yaml" gcloud container clusters get-credentials ${CLUSTER} --project ${PROJECT} --zone ${ZONE} ${INTERNAL_IP}
+  # mv "${USER_CONFIG_HOME}/var/kubeconfig/${ZONE}-${PROJECT}-${CLUSTER}" "${USER_CONFIG_HOME}/var/kubeconfig/${ZONE}-${PROJECT}-${CLUSTER}.yaml"
 }
 
 
