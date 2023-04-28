@@ -9,5 +9,6 @@ if [[ -a "$HOME/.cargo/env" ]]; then
   . "$HOME/.cargo/env"
 fi
 
+export XDG_CONFIG_HOME="$HOME/.config"
 export USER_CONFIG_HOME="$HOME/.config"
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True

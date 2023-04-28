@@ -73,6 +73,7 @@ source $my_features/direnv.zsh
 source $my_features/thefuck.zsh
 source $my_features/nvm.zsh
 source $my_features/kubernetes.zsh
+source $my_features/networking.zsh
 
 # https://gist.github.com/magicdude4eva/2d4748f8ef3e6bf7b1591964c201c1ab
 ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
