@@ -109,7 +109,7 @@ randomChar() {
 
 if test -f "/usr/bin/switch.sh"; then
   source /usr/bin/switch.sh
-  abbr kc="switch"
+  abbr kc="switch --config-path /home/frla/.kube/switch-config.yaml"
   abbr kn="switch namespace"
 fi
 abbr k="kubectl"
@@ -125,3 +125,5 @@ alias ksd="kubectl-get-decoded-secret-fzf"
 
 source <(kubectl completion zsh)
 compdef kubecolor=kubectl
+
+source <(egctl completion zsh)
