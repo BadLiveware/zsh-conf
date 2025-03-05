@@ -6,6 +6,8 @@ export PATH=$PATH:"$(go env GOPATH)/bin"
 export PATH=$PATH:"/home/dev/.local/bin"
 # kubeswitch
 export PATH=$PATH:"$HOME/code/kubeswitch/hack/switch/"
+# Add .NET Core SDK tools
+export PATH="$PATH:$HOME/.dotnet/tools"
 # Setup cargo
 if [[ -a "$HOME/.cargo/env" ]]; then
   . "$HOME/.cargo/env"

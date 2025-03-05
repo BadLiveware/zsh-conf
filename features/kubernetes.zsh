@@ -127,3 +127,7 @@ source <(kubectl completion zsh)
 compdef kubecolor=kubectl
 
 source <(egctl completion zsh)
+
+sl() {
+  kubectl stern --output=raw $1 | bat --language=json --pager='less --RAW-CONTROL-CHARS +F'
+}

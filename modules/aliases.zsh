@@ -21,3 +21,25 @@ alias magit="emacs \
       --load $USER_CONFIG_HOME/magit/init.el"
       #\ 
       #--eval '(progn (magit-status) (delete-other-windows))'"
+
+watch-int () {
+    IN=2
+    case $1 in
+        -n)
+            IN=$2
+            shift 2
+            ;;
+    esac
+    printf '\033c' # clear
+    CM="$*"
+    LEFT="$(printf 'Every %.1f: %s' $IN $CM)"
+    ((PAD = COLUMNS - ${#LEFT}))
+    while :
+    do
+        DT=$(date)
+        printf "$LEFT%${PAD}s\n" "$HOST $(date)"
+        eval "$CM"
+        sleep $IN
+        printf '\033c'
+    done
+}

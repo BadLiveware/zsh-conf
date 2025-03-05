@@ -30,5 +30,5 @@ jb() {
     -o merge_request.create \
     -o merge_request.remove_source_branch \
     -o merge_request.draft \
-    -o merge_request.title="${id}${descr}"
+    -o merge_request.title="${title}"
 }
